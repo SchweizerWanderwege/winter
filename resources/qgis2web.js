@@ -254,7 +254,7 @@ function onPointerMove(evt) {
 
                     highlightStyle = new ol.style.Style({
                         stroke: new ol.style.Stroke({
-                            color: '#ffff00',
+                            color: '#faafb8',
                             lineDash: null,
                             width: featureWidth
                         })
@@ -579,7 +579,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	lastWorkedOnDiv.style.borderRadius = '3px';
 	
 	// Set the content of the overlay
-	var lastWorkedOnDate = new Date('2025-06-03').toLocaleDateString(); // Replace with the actual date
+	var lastWorkedOnDate = new Date('2026-03-09').toLocaleDateString(); // Replace with the actual date
 	lastWorkedOnDiv.innerHTML = 'Datenstand: ' + lastWorkedOnDate;
 	
 	// Create a new control for the overlay
