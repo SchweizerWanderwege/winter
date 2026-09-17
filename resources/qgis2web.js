@@ -1547,18 +1547,24 @@ document.addEventListener('DOMContentLoaded', function() {
                 Math.min(1, maximumPercentage)
             );
 
-        var svgHeight = 220;
+        var mountainTop = 40;
+        var mountainBottom = 205;
+        var mountainHeight =
+            mountainBottom - mountainTop;
 
         var selectionTop =
-            svgHeight -
-            maximumPercentage * svgHeight;
+            mountainBottom -
+            maximumPercentage *
+            mountainHeight;
 
         var selectionBottom =
-            svgHeight -
-            minimumPercentage * svgHeight;
+            mountainBottom -
+            minimumPercentage *
+            mountainHeight;
 
         var selectionHeight =
-            selectionBottom - selectionTop;
+            selectionBottom -
+            selectionTop;
 
         altitudeMountainSelection.setAttribute(
             'y',

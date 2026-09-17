@@ -1549,9 +1549,9 @@ td video {
 
 #route-altitude-slider {
     position: absolute;
-    top: 18%;
+    top: 18.18%;
     right: 0;
-    bottom: 7%;
+    bottom: 6.82%;
     left: 0;
     width: 100%;
     height: auto;
@@ -1596,27 +1596,27 @@ td video {
 #route-altitude-slider .noUi-handle::before {
     position: absolute;
     top: 10px;
-    right: 14px;
-    left: 14px;
+    right: 25px;
+    left: 25px;
     display: block;
     width: auto;
     height: 2px;
-    background: #e6007e;
-    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.8);
+    background: rgba(230, 0, 126, 0.72);
+    box-shadow: 0 1px 2px rgba(255, 255, 255, 0.9);
     content: "";
 }
 
 #route-altitude-slider .noUi-handle::after {
     position: absolute;
-    top: 3px;
-    right: 7px;
+    top: 5px;
+    right: 10px;
     display: block;
-    width: 16px;
-    height: 16px;
+    width: 12px;
+    height: 12px;
     background: #fff;
     border: 2px solid #e6007e;
     border-radius: 50%;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.28);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.24);
     content: "";
 }
 
@@ -1635,4 +1635,12 @@ td video {
     white-space: nowrap;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.14);
     transform: translateY(-50%);
+}
+#route-altitude-slider.noUi-target,
+#route-altitude-slider .noUi-base,
+#route-altitude-slider .noUi-connects,
+#route-altitude-slider .noUi-connect {
+    background: transparent;
+    border: 0;
+    box-shadow: none;
 }
