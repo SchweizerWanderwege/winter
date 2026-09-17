@@ -605,6 +605,9 @@ document.addEventListener('DOMContentLoaded', function() {
     var routeList = document.getElementById('route-list');
     var routeStatus = document.getElementById('route-panel-status');
     var selectedRouteId = null;
+    var routeSearchInput = document.getElementById('route-search-input');
+    var routeSearchClear = document.getElementById('route-search-clear');
+    var routeSearchTerm = '';
 
     if (!routeList || !routeStatus) {
         console.warn('Routenpanel wurde im HTML nicht gefunden.');
@@ -734,6 +737,14 @@ document.addEventListener('DOMContentLoaded', function() {
         routes = Object.keys(uniqueRoutes).map(function (key) {
             return uniqueRoutes[key];
         });
+
+        if (routeSearchTerm) {
+            routes = routes.filter(function (route) {
+                return String(route.name)
+                    .toLocaleLowerCase('de-CH')
+                    .includes(routeSearchTerm);
+            });
+        }
 
         routes.sort(function (routeA, routeB) {
             return routeA.name.localeCompare(
@@ -965,6 +976,27 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     });
+    
+    if (routeSearchInput && routeSearchClear) {
+        routeSearchInput.addEventListener('input', function () {
+            routeSearchTerm = routeSearchInput.value
+                .trim()
+                .toLocaleLowerCase('de-CH');
+
+            routeSearchClear.hidden = routeSearchTerm === '';
+
+            updateVisibleRouteList();
+        });
+
+        routeSearchClear.addEventListener('click', function () {
+            routeSearchInput.value = '';
+            routeSearchTerm = '';
+            routeSearchClear.hidden = true;
+
+            updateVisibleRouteList();
+            routeSearchInput.focus();
+        });
+    }
 
     updateVisibleRouteList();
 })();
