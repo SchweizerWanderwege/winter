@@ -67,16 +67,6 @@
             </div>
 
             <div class="route-panel-content">
-                <div class="route-search">
-                    <input
-                        id="route-search-input"
-                        type="search"
-                        placeholder="Route suchen …"
-                        aria-label="Route suchen"
-                        autocomplete="off"
-                    >
-                </div>
-
                 <div id="route-list" class="route-list"></div>
             </div>
         </aside>
@@ -91,6 +81,28 @@
         >
             Routen
         </button>
+        <div id="route-search-bar" class="route-search-bar">
+            <span class="route-search-icon" aria-hidden="true">⌕</span>
+
+            <input
+                id="route-search-input"
+                type="search"
+                placeholder="Route suchen …"
+                aria-label="Route suchen"
+                autocomplete="off"
+            >
+
+            <button
+                id="route-search-clear"
+                class="route-search-clear"
+                type="button"
+                title="Suche zurücksetzen"
+                aria-label="Suche zurücksetzen"
+                hidden
+            >
+                ×
+            </button>
+        </div>
         <div id="map">
             <div id="popup" class="ol-popup">
                 <a href="#" id="popup-closer" class="ol-popup-closer"></a>
