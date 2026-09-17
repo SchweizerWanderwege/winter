@@ -241,19 +241,128 @@
 
                 </section>
 
-                <section class="map-filter-section map-filter-placeholder">
-                    <span>Konditionelle Schwierigkeit</span>
-                    <span>Folgt</span>
+                <section class="map-filter-section">
+                    <div class="map-filter-heading">
+                        <span>Konditionelle Schwierigkeit</span>
+                    </div>
+
+                    <div
+                        id="condition-filter"
+                        class="filter-segmented-pill filter-segmented-pill-three"
+                    >
+                        <button
+                            class="filter-segment is-active"
+                            type="button"
+                            data-condition-filter="leicht"
+                            aria-pressed="true"
+                        >
+                            leicht
+                        </button>
+
+                        <button
+                            class="filter-segment is-active"
+                            type="button"
+                            data-condition-filter="mittel"
+                            aria-pressed="true"
+                        >
+                            mittel
+                        </button>
+
+                        <button
+                            class="filter-segment is-active"
+                            type="button"
+                            data-condition-filter="schwer"
+                            aria-pressed="true"
+                        >
+                            schwer
+                        </button>
+                    </div>
                 </section>
 
-                <section class="map-filter-section map-filter-placeholder">
-                    <span>Technische Schwierigkeit</span>
-                    <span>Folgt</span>
+                <section
+                    id="technical-filter-section"
+                    class="map-filter-section"
+                >
+                    <div class="map-filter-heading">
+                        <span>Technische Schwierigkeit</span>
+                    </div>
+
+                    <div
+                        id="technical-filter"
+                        class="filter-segmented-pill filter-segmented-pill-three technical-filter-pill"
+                    >
+                        <button
+                            class="filter-segment technical-filter-easy is-active"
+                            type="button"
+                            data-technical-filter="leicht"
+                            aria-pressed="true"
+                        >
+                            leicht
+                        </button>
+
+                        <button
+                            class="filter-segment technical-filter-medium is-active"
+                            type="button"
+                            data-technical-filter="mittel"
+                            aria-pressed="true"
+                        >
+                            mittel
+                        </button>
+
+                        <button
+                            class="filter-segment technical-filter-hard is-active"
+                            type="button"
+                            data-technical-filter="schwer"
+                            aria-pressed="true"
+                        >
+                            schwer
+                        </button>
+                    </div>
                 </section>
 
-                <section class="map-filter-section map-filter-placeholder">
-                    <span>Höhenlage</span>
-                    <span>Folgt</span>
+                <section
+                    id="altitude-filter-section"
+                    class="map-filter-section"
+                >
+                    <div class="map-filter-heading">
+                        <span>Höhenlage</span>
+
+                        <span
+                            id="route-altitude-value"
+                            class="route-altitude-value"
+                        >
+                            Wird geladen ...
+                        </span>
+                    </div>
+
+                    <div class="altitude-filter-layout">
+
+                        <div class="altitude-mountain" aria-hidden="true">
+                            <div class="altitude-mountain-back"></div>
+                            <div class="altitude-mountain-front"></div>
+                        </div>
+
+                        <div class="altitude-slider-area">
+
+                            <span
+                                id="route-altitude-limit-max"
+                                class="altitude-limit altitude-limit-max"
+                            >
+                                Max.
+                            </span>
+
+                            <div id="route-altitude-slider"></div>
+
+                            <span
+                                id="route-altitude-limit-min"
+                                class="altitude-limit altitude-limit-min"
+                            >
+                                Min.
+                            </span>
+
+                        </div>
+
+                    </div>
                 </section>
 
             </div>
