@@ -941,6 +941,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
         updateVisibleRouteList();
 
+        var geometry = clickedFeature.getGeometry();
+
+        if (geometry) {
+            map.getView().fit(
+                geometry.getExtent(),
+                {
+                    padding: [80, 80, 80, 420],
+                    duration: 600,
+                    maxZoom: 15
+                }
+            );
+        }
+
         var activeListItem = routeList.querySelector(
             '[data-route-id="' + selectedRouteId + '"]'
         );
