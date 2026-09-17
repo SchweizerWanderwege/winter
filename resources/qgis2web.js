@@ -592,9 +592,10 @@ document.addEventListener('DOMContentLoaded', function() {
 (function () {
     var selectedRouteLayer = new ol.layer.Vector({
         source: new ol.source.Vector(),
+        zIndex: 1,
         style: new ol.style.Style({
             stroke: new ol.style.Stroke({
-                color: 'rgba(0,0,0,0.25)',
+                color: 'rgba(0,0,0,0.35)',
                 width: 12
             })
         })
