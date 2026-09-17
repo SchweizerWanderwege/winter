@@ -32,12 +32,12 @@ var wms_layers = [];
                             
                           });
 var format_Schneeschuhwanderwege_1 = new ol.format.GeoJSON();
-var features_Schneeschuhwanderwege_1 = format_Schneeschuhwanderwege_1.readFeatures(json_Schneeschuhwanderwege_1, 
-            {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'});
+
 var jsonSource_Schneeschuhwanderwege_1 = new ol.source.Vector({
     attributions: ' ',
+    url: 'data/schneeschuh.geojson',
+    format: format_Schneeschuhwanderwege_1
 });
-jsonSource_Schneeschuhwanderwege_1.addFeatures(features_Schneeschuhwanderwege_1);
 var lyr_Schneeschuhwanderwege_1 = new ol.layer.Vector({
                 declutter: false,
                 source:jsonSource_Schneeschuhwanderwege_1, 
@@ -48,12 +48,12 @@ var lyr_Schneeschuhwanderwege_1 = new ol.layer.Vector({
     <img src="styles/legend/Schneeschuhwanderwege_1_0.png" /> Best-of<br />\
     <img src="styles/legend/Schneeschuhwanderwege_1_1.png" /> Basisnetz<br />' });
 var format_Winterwanderwege_3 = new ol.format.GeoJSON();
-var features_Winterwanderwege_3 = format_Winterwanderwege_3.readFeatures(json_Winterwanderwege_3, 
-            {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'});
+
 var jsonSource_Winterwanderwege_3 = new ol.source.Vector({
     attributions: ' ',
+    url: 'data/winter.geojson',
+    format: format_Winterwanderwege_3
 });
-jsonSource_Winterwanderwege_3.addFeatures(features_Winterwanderwege_3);
 var lyr_Winterwanderwege_3 = new ol.layer.Vector({
                 declutter: false,
                 source:jsonSource_Winterwanderwege_3, 
