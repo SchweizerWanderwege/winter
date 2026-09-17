@@ -589,3 +589,158 @@ document.addEventListener('DOMContentLoaded', function() {
 	
 	// Add the control to the map
 	map.addControl(lastWorkedOnControl);
+(function () {
+    var routeList = document.getElementById('route-list');
+    var routeStatus = document.getElementById('route-panel-status');
+
+    if (!routeList || !routeStatus) {
+        console.warn('Routenpanel wurde im HTML nicht gefunden.');
+        return;
+    }
+
+    function escapeHtml(value) {
+        return String(value == null ? '' : value)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#039;');
+    }
+
+    function getVisibleFeatures(source, extent) {
+        if (!source) {
+            return [];
+        }
+
+        return source.getFeaturesInExtent(extent).filter(function (feature) {
+            return feature && feature.getGeometry();
+        });
+    }
+
+    function createRouteRecord(feature, defaultType) {
+        var routeType = feature.get('LvArt') || defaultType;
+        var routeId = feature.get('NrR_ID');
+
+        return {
+            id: routeId == null ? '' : String(routeId),
+            name: feature.get('NameR') || 'Route ohne Namen',
+            type: routeType,
+            feature: feature
+        };
+    }
+
+    function updateVisibleRouteList() {
+        var extent = map.getView().calculateExtent(map.getSize());
+
+        var snowFeatures = getVisibleFeatures(
+            jsonSource_Schneeschuhwanderwege_1,
+            extent
+        );
+
+        var winterFeatures = getVisibleFeatures(
+            jsonSource_Winterwanderwege_3,
+            extent
+        );
+
+        var routes = [];
+
+        snowFeatures.forEach(function (feature) {
+            routes.push(
+                createRouteRecord(feature, 'Schneeschuhrouten')
+            );
+        });
+
+        winterFeatures.forEach(function (feature) {
+            routes.push(
+                createRouteRecord(feature, 'Winterwanderwege')
+            );
+        });
+
+        var uniqueRoutes = {};
+
+        routes.forEach(function (route) {
+            var key = route.id || route.type + '|' + route.name;
+
+            if (!uniqueRoutes[key]) {
+                uniqueRoutes[key] = route;
+            }
+        });
+
+        routes = Object.keys(uniqueRoutes).map(function (key) {
+            return uniqueRoutes[key];
+        });
+
+        routes.sort(function (routeA, routeB) {
+            return routeA.name.localeCompare(
+                routeB.name,
+                'de-CH',
+                {
+                    sensitivity: 'base',
+                    numeric: true
+                }
+            );
+        });
+
+        routeStatus.textContent =
+            routes.length === 1
+                ? '1 sichtbare Route'
+                : routes.length + ' sichtbare Routen';
+
+        if (routes.length === 0) {
+            routeList.innerHTML =
+                '<p class="route-list-empty">' +
+                'In diesem Kartenausschnitt sind keine Routen sichtbar.' +
+                '</p>';
+
+            return;
+        }
+
+        routeList.innerHTML = routes.map(function (route) {
+            var isSnowshoe =
+                route.type === 'Schneeschuhrouten';
+
+            var typeClass = isSnowshoe
+                ? 'route-type-snowshoe'
+                : 'route-type-winter';
+
+            var typeLabel = isSnowshoe
+                ? 'Schneeschuhroute'
+                : 'Winterwanderweg';
+
+            var typeSymbol = isSnowshoe ? 'SS' : 'WW';
+
+            return (
+                '<button class="route-list-item" ' +
+                'type="button" ' +
+                'data-route-id="' + escapeHtml(route.id) + '">' +
+                    '<span class="route-list-type ' +
+                    typeClass + '">' +
+                        '<span class="route-type-symbol">' +
+                        typeSymbol +
+                        '</span>' +
+                        '<span>' +
+                        escapeHtml(typeLabel) +
+                        '</span>' +
+                    '</span>' +
+                    '<strong class="route-list-name">' +
+                    escapeHtml(route.name) +
+                    '</strong>' +
+                '</button>'
+            );
+        }).join('');
+    }
+
+    map.on('moveend', updateVisibleRouteList);
+
+    jsonSource_Schneeschuhwanderwege_1.on(
+        'featuresloadend',
+        updateVisibleRouteList
+    );
+
+    jsonSource_Winterwanderwege_3.on(
+        'featuresloadend',
+        updateVisibleRouteList
+    );
+
+    updateVisibleRouteList();
+})();
