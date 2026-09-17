@@ -81,27 +81,50 @@
         >
             Routen
         </button>
-        <div id="route-search-bar" class="route-search-bar">
-            <span class="route-search-icon" aria-hidden="true">⌕</span>
+        <div class="route-search-container">
 
-            <input
-                id="route-search-input"
-                type="search"
-                placeholder="Route suchen …"
-                aria-label="Route suchen"
-                autocomplete="off"
-            >
+            <div id="route-search-bar" class="route-search-bar">
 
-            <button
-                id="route-search-clear"
-                class="route-search-clear"
-                type="button"
-                title="Suche zurücksetzen"
-                aria-label="Suche zurücksetzen"
+                <span class="route-search-icon" aria-hidden="true">⌕</span>
+
+                <input
+                    id="route-search-input"
+                    type="search"
+                    placeholder="Route suchen …"
+                    aria-label="Route suchen"
+                    autocomplete="off"
+                >
+
+                <button
+                    id="route-search-filters-toggle"
+                    class="route-search-filters-toggle"
+                    type="button"
+                    aria-label="Filter anzeigen"
+                    title="Filter anzeigen"
+                >
+                    ⚙
+                </button>
+
+                <button
+                    id="route-search-clear"
+                    class="route-search-clear"
+                    type="button"
+                    title="Suche zurücksetzen"
+                    aria-label="Suche zurücksetzen"
+                    hidden
+                >
+                    ×
+                </button>
+
+            </div>
+
+            <div
+                id="route-search-filters"
+                class="route-search-filters"
                 hidden
             >
-                ×
-            </button>
+            </div>
+
         </div>
 
         <div id="map-selection" class="map-selection">
