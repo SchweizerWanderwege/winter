@@ -1159,7 +1159,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
             applyMapFilters();
         });
-    }
 
     applyMapFilters();
 })();
