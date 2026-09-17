@@ -625,8 +625,60 @@ document.addEventListener('DOMContentLoaded', function() {
             id: routeId == null ? '' : String(routeId),
             name: feature.get('NameR') || 'Route ohne Namen',
             type: routeType,
+            distance: feature.get('LaengeR'),
+            duration: feature.get('ZeitStZiR'),
+            ascent: feature.get('HoeheAufR'),
+            descent: feature.get('HoeheAbR'),
+            difficulty: feature.get('KonditionR'),
             feature: feature
         };
+    }
+
+    function formatDistance(value) {
+        var metres = Number(value);
+
+        if (!Number.isFinite(metres)) {
+            return 'Keine Distanz';
+        }
+
+        return (metres / 1000).toLocaleString(
+            'de-CH',
+            {
+                minimumFractionDigits: 1,
+                maximumFractionDigits: 1
+            }
+        ) + ' km';
+    }
+
+    function formatDuration(value) {
+        var minutes = Math.round(Number(value));
+
+        if (!Number.isFinite(minutes)) {
+            return 'Keine Dauer';
+        }
+
+        var hours = Math.floor(minutes / 60);
+        var remainingMinutes = minutes % 60;
+
+        if (hours === 0) {
+            return remainingMinutes + ' min';
+        }
+
+        if (remainingMinutes === 0) {
+            return hours + ' h';
+        }
+
+        return hours + ' h ' + remainingMinutes + ' min';
+    }
+
+    function formatElevation(value) {
+        var metres = Math.round(Number(value));
+
+        if (!Number.isFinite(metres)) {
+            return '–';
+        }
+
+        return metres.toLocaleString('de-CH') + ' m';
     }
 
     function updateVisibleRouteList() {
@@ -713,18 +765,50 @@ document.addEventListener('DOMContentLoaded', function() {
                 '<button class="route-list-item" ' +
                 'type="button" ' +
                 'data-route-id="' + escapeHtml(route.id) + '">' +
+
                     '<span class="route-list-type ' +
                     typeClass + '">' +
+
                         '<span class="route-type-symbol">' +
                         typeSymbol +
                         '</span>' +
+
                         '<span>' +
                         escapeHtml(typeLabel) +
                         '</span>' +
+
                     '</span>' +
+
                     '<strong class="route-list-name">' +
                     escapeHtml(route.name) +
                     '</strong>' +
+
+                    '<span class="route-list-facts">' +
+                        '<span>' +
+                        escapeHtml(formatDistance(route.distance)) +
+                        '</span>' +
+
+                        '<span aria-hidden="true">·</span>' +
+
+                        '<span>' +
+                        escapeHtml(formatDuration(route.duration)) +
+                        '</span>' +
+                    '</span>' +
+
+                    '<span class="route-list-elevation">' +
+                        '<span>↑ ' +
+                        escapeHtml(formatElevation(route.ascent)) +
+                        '</span>' +
+
+                        '<span>↓ ' +
+                        escapeHtml(formatElevation(route.descent)) +
+                        '</span>' +
+                    '</span>' +
+
+                    '<span class="route-list-difficulty">' +
+                    escapeHtml(route.difficulty || 'Keine Angabe') +
+                    '</span>' +
+
                 '</button>'
             );
         }).join('');
