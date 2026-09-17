@@ -97,16 +97,6 @@
                 >
 
                 <button
-                    id="route-search-filters-toggle"
-                    class="route-search-filters-toggle"
-                    type="button"
-                    aria-label="Filter anzeigen"
-                    title="Filter anzeigen"
-                >
-                    ⚙
-                </button>
-
-                <button
                     id="route-search-clear"
                     class="route-search-clear"
                     type="button"
@@ -117,34 +107,6 @@
                     ×
                 </button>
 
-            </div>
-
-            <div
-                id="route-search-filters"
-                class="route-search-filters"
-                hidden
-            >
-                <div class="route-filter-section">
-
-                    <div class="route-filter-header">
-                        <span>Distanz</span>
-
-                        <span
-                            id="route-distance-value"
-                            class="route-distance-value"
-                        >
-                            Wird geladen ...
-                        </span>
-                    </div>
-
-                    <div class="route-distance-limits">
-                        <span id="route-distance-limit-min">Min.</span>
-                        <span id="route-distance-limit-max">Max.</span>
-                    </div>
-
-                    <div id="route-distance-slider"></div>
-
-                </div>
             </div>
 
             <div
@@ -200,6 +162,97 @@
                 </button>
             </div>
         </div>
+
+        <button
+            id="map-filters-open"
+            class="map-filters-open"
+            type="button"
+            aria-controls="map-filters-panel"
+            aria-expanded="false"
+            title="Routenfilter öffnen"
+        >
+            Filter
+        </button>
+
+        <aside
+            id="map-filters-panel"
+            class="map-filters-panel"
+            aria-label="Routenfilter"
+            hidden
+        >
+            <div class="map-filters-header">
+                <div>
+                    <h2>Routen filtern</h2>
+                    <p>Die Filter wirken auf Karte, Routenliste und Suche.</p>
+                </div>
+
+                <button
+                    id="map-filters-close"
+                    class="map-filters-close"
+                    type="button"
+                    aria-label="Routenfilter schliessen"
+                    title="Routenfilter schliessen"
+                >
+                    ×
+                </button>
+            </div>
+
+            <div class="map-filters-content">
+
+                <section class="map-filter-section">
+                    <div class="map-filter-heading">
+                        <span>Distanz</span>
+
+                        <span
+                            id="route-distance-value"
+                            class="route-distance-value"
+                        >
+                            Wird geladen ...
+                        </span>
+                    </div>
+
+                    <div class="route-distance-limits">
+                        <span id="route-distance-limit-min">Min.</span>
+                        <span id="route-distance-limit-max">Max.</span>
+                    </div>
+
+                    <div id="route-distance-slider"></div>
+                </section>
+
+                <section class="map-filter-section map-filter-placeholder">
+                    <span>Dauer</span>
+                    <span>Folgt</span>
+                </section>
+
+                <section class="map-filter-section map-filter-placeholder">
+                    <span>Konditionelle Schwierigkeit</span>
+                    <span>Folgt</span>
+                </section>
+
+                <section class="map-filter-section map-filter-placeholder">
+                    <span>Technische Schwierigkeit</span>
+                    <span>Folgt</span>
+                </section>
+
+                <section class="map-filter-section map-filter-placeholder">
+                    <span>Höhenlage</span>
+                    <span>Folgt</span>
+                </section>
+
+            </div>
+
+            <div class="map-filters-footer">
+                <button
+                    id="map-filters-reset"
+                    class="map-filters-reset"
+                    type="button"
+                    disabled
+                >
+                    Filter zurücksetzen
+                </button>
+            </div>
+        </aside>
+
 
         <div id="map">
             <div id="popup" class="ol-popup">
