@@ -1492,10 +1492,10 @@ td video {
 
 .altitude-mountain-graphic {
     position: absolute;
-    top: 22px;
-    right: 8px;
-    bottom: 22px;
-    left: 8px;
+    top: 12px;
+    right: 6px;
+    bottom: 12px;
+    left: 6px;
 }
 
 .altitude-mountain-svg {
@@ -1520,7 +1520,7 @@ td video {
 .altitude-mountain-outline {
     fill: none;
     stroke: #303030;
-    stroke-width: 2;
+    stroke-width: 1;
     stroke-linecap: round;
     stroke-linejoin: round;
     vector-effect: non-scaling-stroke;
@@ -1594,35 +1594,26 @@ td video {
 }
 
 #route-altitude-slider .noUi-handle::before {
-    position: absolute;
-    top: 10px;
-    right: 25px;
-    left: 25px;
-    display: block;
-    width: auto;
-    height: 2px;
-    background: rgba(230, 0, 126, 0.72);
-    box-shadow: 0 1px 2px rgba(255, 255, 255, 0.9);
-    content: "";
+    display: none;
 }
 
 #route-altitude-slider .noUi-handle::after {
     position: absolute;
-    top: 5px;
-    right: 10px;
+    top: 6px;
+    right: -2px;
     display: block;
-    width: 12px;
-    height: 12px;
-    background: #fff;
-    border: 2px solid #e6007e;
-    border-radius: 50%;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.24);
+    width: 18px;
+    height: 8px;
+    background: #e6007e;
+    border: 2px solid #fff;
+    border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
     content: "";
 }
 
 #route-altitude-slider .noUi-tooltip {
     top: 50%;
-    right: 30px;
+    right: 22px;
     bottom: auto;
     left: auto;
     padding: 3px 7px;
@@ -1634,6 +1625,7 @@ td video {
     font-weight: 700;
     white-space: nowrap;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.14);
+    pointer-events: none;
     transform: translateY(-50%);
 }
 #route-altitude-slider.noUi-target,
