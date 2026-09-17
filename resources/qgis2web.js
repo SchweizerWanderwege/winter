@@ -891,6 +891,28 @@ document.addEventListener('DOMContentLoaded', function() {
 
         updateVisibleRouteList();
 
+        var routeLayer =
+            feature.get('LvArt') === 'Winterwanderwege'
+                ? lyr_Winterwanderwege_3
+                : lyr_Schneeschuhwanderwege_1;
+
+        var popupText = '<ul><li><table>';
+        popupText += '<a><b>' + routeLayer.get('popuplayertitle') + '</b></a>';
+        popupText += createPopupField(
+            feature,
+            feature.getKeys(),
+            routeLayer
+        );
+        popupText += '</table></li></ul>';
+
+        popupContent = popupText;
+
+        popupCoord = ol.extent.getCenter(
+            geometry.getExtent()
+        );
+
+        updatePopup();
+
         map.getView().fit(
             geometry.getExtent(),
             {

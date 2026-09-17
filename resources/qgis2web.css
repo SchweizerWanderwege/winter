@@ -652,3 +652,51 @@ td video {
 .route-list-item-active .route-list-name {
     color: #111;
 }
+.ol-popup {
+    border-radius: 12px;
+    padding: 0;
+    overflow: hidden;
+
+    box-shadow:
+        0 6px 24px rgba(0,0,0,0.18);
+
+    border: none;
+}
+
+.ol-popup-content {
+    padding: 14px 16px;
+}
+
+.ol-popup table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.ol-popup tr {
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+.ol-popup tr:last-child {
+    border-bottom: none;
+}
+
+.ol-popup th {
+    width: 40%;
+    text-align: left;
+    font-weight: 600;
+    color: #555;
+    padding: 6px 0;
+}
+
+.ol-popup td {
+    padding: 6px 0;
+    color: #222;
+}
+
+.ol-popup b {
+    display: block;
+    margin-bottom: 10px;
+
+    font-size: 16px;
+    color: #111;
+}
