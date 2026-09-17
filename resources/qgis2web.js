@@ -649,6 +649,31 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var distanceSliderInitialized = false;
 
+    var durationSlider =
+        document.getElementById(
+            'route-duration-slider'
+        );
+
+    var durationValue =
+        document.getElementById(
+            'route-duration-value'
+        );
+
+    var durationLimitMin =
+        document.getElementById(
+            'route-duration-limit-min'
+        );
+
+    var durationLimitMax =
+        document.getElementById(
+            'route-duration-limit-max'
+        );
+
+    var selectedDurationMinimum = null;
+    var selectedDurationMaximum = null;
+
+    var durationSliderInitialized = false;
+
     map.addLayer(selectedRouteLayer);
     var routeList = document.getElementById('route-list');
     var routeStatus = document.getElementById('route-panel-status');
@@ -939,6 +964,34 @@ document.addEventListener('DOMContentLoaded', function() {
         ) + ' km';
     }
 
+    function formatDurationValue(value) {
+
+        var minutes = Math.round(
+            Number(value)
+        );
+
+        var hours =
+            Math.floor(minutes / 60);
+
+        var remainingMinutes =
+            minutes % 60;
+
+        if (hours === 0) {
+            return remainingMinutes + ' min';
+        }
+
+        if (remainingMinutes === 0) {
+            return hours + ' h';
+        }
+
+        return (
+            hours +
+            ' h ' +
+            remainingMinutes +
+            ' min'
+        );
+    }
+
     function getDistanceStatistics() {
         var distances = [];
 
@@ -986,6 +1039,65 @@ document.addEventListener('DOMContentLoaded', function() {
             max: maximum
         };
     }
+
+    function getDurationStatistics() {
+
+        var durations = [];
+
+        [
+            jsonSource_Winterwanderwege_3,
+            jsonSource_Schneeschuhwanderwege_1
+        ].forEach(function (source) {
+
+            source.getFeatures().forEach(
+                function (feature) {
+
+                    if (
+                        !routeMatchesMapFilters(
+                            feature
+                        )
+                    ) {
+                        return;
+                    }
+
+                    var duration =
+                        Number(
+                            feature.get(
+                                'ZeitStZiR'
+                            )
+                        );
+
+                    if (
+                        Number.isFinite(
+                            duration
+                        )
+                    ) {
+                        durations.push(
+                            duration
+                        );
+                    }
+                }
+            );
+
+        });
+
+        if (
+            durations.length === 0
+        ) {
+            return null;
+        }
+
+        return {
+            min: Math.min.apply(
+                null,
+                durations
+            ),
+            max: Math.max.apply(
+                null,
+                durations
+            )
+        };
+    }    
 
     function updateDistanceFilter() {
         if (
@@ -1104,6 +1216,116 @@ document.addEventListener('DOMContentLoaded', function() {
         );
     }    
 
+    function updateDurationFilter() {
+
+        if (
+            !durationSlider ||
+            !durationValue
+        ) {
+            return;
+        }
+
+        var stats =
+            getDurationStatistics();
+
+        if (!stats) {
+            return;
+        }
+
+        durationLimitMin.textContent =
+            formatDurationValue(
+                stats.min
+            );
+
+        durationLimitMax.textContent =
+            formatDurationValue(
+                stats.max
+            );
+
+        durationValue.textContent =
+            formatDurationValue(
+                stats.min
+            ) +
+            ' bis ' +
+            formatDurationValue(
+                stats.max
+            );
+
+        var tooltipFormatter = {
+            to: function (value) {
+                return formatDurationValue(
+                    value
+                );
+            }
+        };
+
+        if (
+            !durationSliderInitialized
+        ) {
+
+            noUiSlider.create(
+                durationSlider,
+                {
+                    start: [
+                        stats.min,
+                        stats.max
+                    ],
+                    connect: true,
+                    step: 5,
+                    range: {
+                        min: stats.min,
+                        max: stats.max
+                    },
+                    tooltips: [
+                        tooltipFormatter,
+                        tooltipFormatter
+                    ]
+                }
+            );
+
+            durationSlider.noUiSlider.on(
+                'update',
+                function (values) {
+
+                    selectedDurationMinimum =
+                        Number(values[0]);
+
+                    selectedDurationMaximum =
+                        Number(values[1]);
+
+                    durationValue.textContent =
+                        formatDurationValue(
+                            selectedDurationMinimum
+                        ) +
+                        ' bis ' +
+                        formatDurationValue(
+                            selectedDurationMaximum
+                        );
+
+                }
+            );
+
+            durationSliderInitialized =
+                true;
+
+            return;
+        }
+
+        durationSlider.noUiSlider
+            .updateOptions(
+                {
+                    range: {
+                        min: stats.min,
+                        max: stats.max
+                    },
+                    start: [
+                        stats.min,
+                        stats.max
+                    ]
+                },
+                true
+            );
+    }
 
     function updateVisibleRouteList() {
         var extent = map.getView().calculateExtent(map.getSize());
@@ -1490,6 +1712,7 @@ document.addEventListener('DOMContentLoaded', function() {
         updateVisibleRouteList();
 
         if (routeSourcesInitialized) {
+            updateDurationFilter();
             updateDistanceFilter();
             updateGlobalSearchResults();
         }
@@ -1755,7 +1978,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 .length;
 
         if (availableFeatureCount > 0) {
-            updateDistanceFilter();
+                updateDistanceFilter();
+                updateDurationFilter();
         }
     }
 
