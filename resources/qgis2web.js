@@ -420,8 +420,8 @@ function onSingleClickWMS(evt) {
     }
 }
 
-map.on('singleclick', onSingleClickFeatures);
-map.on('singleclick', onSingleClickWMS);
+//map.on('singleclick', onSingleClickFeatures);
+//map.on('singleclick', onSingleClickWMS);
 
 //get container
 var topLeftContainerDiv = document.getElementById('top-left-container')
@@ -900,6 +900,57 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         );
 
+    });
+
+    map.on('singleclick', function (event) {
+        var clickedFeature = null;
+
+        map.forEachFeatureAtPixel(
+            event.pixel,
+            function (feature, layer) {
+                if (
+                    layer === lyr_Winterwanderwege_3 ||
+                    layer === lyr_Schneeschuhwanderwege_1
+                ) {
+                    clickedFeature = feature;
+                    return true;
+                }
+            },
+            {
+                hitTolerance: 5
+            }
+        );
+
+        if (!clickedFeature) {
+            return;
+        }
+
+        var routeId = clickedFeature.get('NrR_ID');
+
+        if (routeId == null || String(routeId).trim() === '') {
+            return;
+        }
+
+        selectedRouteId = String(routeId);
+
+        selectedRouteLayer.getSource().clear();
+
+        selectedRouteLayer.getSource().addFeature(
+            clickedFeature.clone()
+        );
+
+        updateVisibleRouteList();
+
+        var activeListItem = routeList.querySelector(
+            '[data-route-id="' + selectedRouteId + '"]'
+        );
+
+        if (activeListItem) {
+            activeListItem.scrollIntoView({
+                behavior: 'smooth',
+                block: 'nearest'
+            });
+        }
     });
 
     updateVisibleRouteList();
