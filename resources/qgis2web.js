@@ -590,6 +590,17 @@ document.addEventListener('DOMContentLoaded', function() {
 	// Add the control to the map
 	map.addControl(lastWorkedOnControl);
 (function () {
+    var selectedRouteLayer = new ol.layer.Vector({
+        source: new ol.source.Vector(),
+        style: new ol.style.Style({
+            stroke: new ol.style.Stroke({
+                color: 'rgba(255,0,0,0.7)',
+                width: 14
+            })
+        })
+    });
+
+    map.addLayer(selectedRouteLayer);
     var routeList = document.getElementById('route-list');
     var routeStatus = document.getElementById('route-panel-status');
 
@@ -862,6 +873,11 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!geometry) {
             return;
         }
+        selectedRouteLayer.getSource().clear();
+
+        selectedRouteLayer.getSource().addFeature(
+            feature.clone()
+        );
 
         map.getView().fit(
             geometry.getExtent(),
