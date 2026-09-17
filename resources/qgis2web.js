@@ -763,6 +763,10 @@ document.addEventListener('DOMContentLoaded', function() {
     var routeSearchInput = document.getElementById('route-search-input');
     var routeSearchClear = document.getElementById('route-search-clear');
     var routeSearchTerm = '';
+    var routeSearchResults =
+        document.getElementById(
+            'route-search-results'
+        );
     var routeSearchFilters =
         document.getElementById('route-search-filters');
 
@@ -810,6 +814,59 @@ document.addEventListener('DOMContentLoaded', function() {
             difficulty: feature.get('KonditionR'),
             feature: feature
         };
+    }
+
+    function selectRouteFeature(feature) {
+        if (!feature || !feature.getGeometry()) {
+            return;
+        }
+
+        var routeId = feature.get('NrR_ID');
+
+        if (
+            routeId == null ||
+            String(routeId).trim() === ''
+        ) {
+            return;
+        }
+
+        selectedRouteId = String(routeId);
+
+        selectedRouteLayer.getSource().clear();
+
+        selectedRouteLayer.getSource().addFeature(
+            feature.clone()
+        );
+
+        map.getView().fit(
+            feature.getGeometry().getExtent(),
+            {
+                padding: [80, 80, 80, 420],
+                duration: 600,
+                maxZoom: 15
+            }
+        );
+
+        window.setTimeout(
+            function () {
+                updateVisibleRouteList();
+
+                var activeListItem =
+                    routeList.querySelector(
+                        '[data-route-id="' +
+                        selectedRouteId +
+                        '"]'
+                    );
+
+                if (activeListItem) {
+                    activeListItem.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'nearest'
+                    });
+                }
+            },
+            650
+        );
     }
 
     function formatDistance(value) {
@@ -1009,6 +1066,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         formatDistanceValue(
                             selectedDistanceMaximum
                         );
+
+                    updateGlobalSearchResults();
                 }
             );
 
@@ -1031,6 +1090,7 @@ document.addEventListener('DOMContentLoaded', function() {
             true
         );
     }    
+
 
     function updateVisibleRouteList() {
         var extent = map.getView().calculateExtent(map.getSize());
@@ -1072,14 +1132,6 @@ document.addEventListener('DOMContentLoaded', function() {
         routes = Object.keys(uniqueRoutes).map(function (key) {
             return uniqueRoutes[key];
         });
-
-        if (routeSearchTerm) {
-            routes = routes.filter(function (route) {
-                return String(route.name)
-                    .toLocaleLowerCase('de-CH')
-                    .includes(routeSearchTerm);
-            });
-        }
 
         routes.sort(function (routeA, routeB) {
             return routeA.name.localeCompare(
@@ -1180,6 +1232,167 @@ document.addEventListener('DOMContentLoaded', function() {
         }).join('');
     }
 
+    function updateGlobalSearchResults() {
+        if (!routeSearchResults) {
+            console.warn(
+                'Der Bereich route-search-results wurde nicht gefunden.'
+            );
+            return;
+        }
+
+        if (!routeSearchTerm) {
+            routeSearchResults.hidden = true;
+            routeSearchResults.innerHTML = '';
+            return;
+        }
+
+        var routes = [];
+
+        jsonSource_Winterwanderwege_3
+            .getFeatures()
+            .forEach(function (feature) {
+                if (!routeMatchesMapFilters(feature)) {
+                    return;
+                }
+
+                routes.push(
+                    createRouteRecord(
+                        feature,
+                        'Winterwanderwege'
+                    )
+                );
+            });
+
+        jsonSource_Schneeschuhwanderwege_1
+            .getFeatures()
+            .forEach(function (feature) {
+                if (!routeMatchesMapFilters(feature)) {
+                    return;
+                }
+
+                routes.push(
+                    createRouteRecord(
+                        feature,
+                        'Schneeschuhrouten'
+                    )
+                );
+            });
+
+        routes = routes.filter(function (route) {
+            return String(route.name)
+                .toLocaleLowerCase('de-CH')
+                .includes(routeSearchTerm);
+        });
+
+        var uniqueRoutes = {};
+
+        routes.forEach(function (route) {
+            var key =
+                route.id ||
+                route.type + '|' + route.name;
+
+            if (!uniqueRoutes[key]) {
+                uniqueRoutes[key] = route;
+            }
+        });
+
+        routes = Object.keys(uniqueRoutes).map(
+            function (key) {
+                return uniqueRoutes[key];
+            }
+        );
+
+        routes.sort(function (routeA, routeB) {
+            return routeA.name.localeCompare(
+                routeB.name,
+                'de-CH',
+                {
+                    sensitivity: 'base',
+                    numeric: true
+                }
+            );
+        });
+
+        routeSearchResults.hidden = false;
+
+        if (routes.length === 0) {
+            routeSearchResults.innerHTML =
+                '<p class="route-search-results-empty">' +
+                'Keine passenden Routen gefunden.' +
+                '</p>';
+
+            return;
+        }
+
+        routeSearchResults.innerHTML =
+            '<div class="route-search-results-header">' +
+            escapeHtml(
+                routes.length === 1
+                    ? '1 passende Route'
+                    : routes.length + ' passende Routen'
+            ) +
+            '</div>' +
+
+            routes.slice(0, 100).map(function (route) {
+                var isSnowshoe =
+                    route.type === 'Schneeschuhrouten';
+
+                var typeLabel =
+                    isSnowshoe ? 'SSWW' : 'WWW';
+
+                var typeClass =
+                    isSnowshoe
+                        ? ' route-search-result-type-ssww'
+                        : '';
+
+                return (
+                    '<button ' +
+                    'class="route-search-result" ' +
+                    'type="button" ' +
+                    'data-search-route-id="' +
+                    escapeHtml(route.id) +
+                    '">' +
+
+                        '<strong ' +
+                        'class="route-search-result-name">' +
+                        escapeHtml(route.name) +
+                        '</strong>' +
+
+                        '<span ' +
+                        'class="route-search-result-facts">' +
+
+                            '<span ' +
+                            'class="route-search-result-type' +
+                            typeClass +
+                            '">' +
+                            typeLabel +
+                            '</span>' +
+
+                            '<span>' +
+                            escapeHtml(
+                                formatDistance(
+                                    route.distance
+                                )
+                            ) +
+                            '</span>' +
+
+                            '<span aria-hidden="true">·</span>' +
+
+                            '<span>' +
+                            escapeHtml(
+                                formatDuration(
+                                    route.duration
+                                )
+                            ) +
+                            '</span>' +
+
+                        '</span>' +
+
+                    '</button>'
+                );
+            }).join('');
+    }
+
     map.on('moveend', updateVisibleRouteList);
 
     var winterRoutesLoaded = false;
@@ -1265,6 +1478,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (routeSourcesInitialized) {
             updateDistanceFilter();
+            updateGlobalSearchResults();
         }
 
         map.getView().fit(
@@ -1343,24 +1557,127 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     if (routeSearchInput && routeSearchClear) {
-        routeSearchInput.addEventListener('input', function () {
-            routeSearchTerm = routeSearchInput.value
-                .trim()
-                .toLocaleLowerCase('de-CH');
+        routeSearchInput.addEventListener(
+            'input',
+            function () {
+                routeSearchTerm =
+                    routeSearchInput.value
+                        .trim()
+                        .toLocaleLowerCase(
+                            'de-CH'
+                        );
 
-            routeSearchClear.hidden = routeSearchTerm === '';
+                routeSearchClear.hidden =
+                    routeSearchTerm === '';
 
-            updateVisibleRouteList();
-        });
+                updateGlobalSearchResults();
+            }
+        );
 
-        routeSearchClear.addEventListener('click', function () {
-            routeSearchInput.value = '';
-            routeSearchTerm = '';
-            routeSearchClear.hidden = true;
+        routeSearchClear.addEventListener(
+            'click',
+            function () {
+                routeSearchInput.value = '';
+                routeSearchTerm = '';
+                routeSearchClear.hidden = true;
 
-            updateVisibleRouteList();
-            routeSearchInput.focus();
-        });
+                updateGlobalSearchResults();
+                routeSearchInput.focus();
+            }
+        );
+    }
+    
+    if (routeSearchResults) {
+        routeSearchResults.addEventListener(
+            'click',
+            function (event) {
+                var button = event.target.closest(
+                    '[data-search-route-id]'
+                );
+
+                if (!button) {
+                    return;
+                }
+
+                var routeId = button.getAttribute(
+                    'data-search-route-id'
+                );
+
+                var feature = null;
+
+                [
+                    jsonSource_Winterwanderwege_3,
+                    jsonSource_Schneeschuhwanderwege_1
+                ].some(function (source) {
+                    feature = source
+                        .getFeatures()
+                        .find(function (candidate) {
+                            return (
+                                String(
+                                    candidate.get(
+                                        'NrR_ID'
+                                    )
+                                ) === routeId
+                            );
+                        });
+
+                    return feature != null;
+                });
+
+                if (!feature || !feature.getGeometry()) {
+                    return;
+                }
+
+                selectedRouteId = routeId;
+
+                selectedRouteLayer
+                    .getSource()
+                    .clear();
+
+                selectedRouteLayer
+                    .getSource()
+                    .addFeature(
+                        feature.clone()
+                    );
+
+                routeSearchResults.hidden = true;
+
+                map.getView().fit(
+                    feature.getGeometry().getExtent(),
+                    {
+                        padding: [
+                            80,
+                            80,
+                            80,
+                            420
+                        ],
+                        duration: 600,
+                        maxZoom: 15
+                    }
+                );
+
+                window.setTimeout(
+                    function () {
+                        updateVisibleRouteList();
+
+                        var activeListItem =
+                            routeList.querySelector(
+                                '[data-route-id="' +
+                                selectedRouteId +
+                                '"]'
+                            );
+
+                        if (activeListItem) {
+                            activeListItem.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'nearest'
+                            });
+                        }
+                    },
+                    650
+                );
+            }
+        );
     }
 
         document.addEventListener('click', function (event) {
