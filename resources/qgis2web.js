@@ -579,7 +579,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	lastWorkedOnDiv.style.borderRadius = '3px';
 	
 	// Set the content of the overlay
-	var lastWorkedOnDate = new Date('2026-03-09').toLocaleDateString(); // Replace with the actual date
+	var lastWorkedOnDate = new Date('2026-09-14').toLocaleDateString(); // Replace with the actual date
 	lastWorkedOnDiv.innerHTML = 'Datenstand: ' + lastWorkedOnDate;
 	
 	// Create a new control for the overlay
@@ -594,8 +594,8 @@ document.addEventListener('DOMContentLoaded', function() {
         source: new ol.source.Vector(),
         style: new ol.style.Style({
             stroke: new ol.style.Stroke({
-                color: 'rgba(255,0,0,0.7)',
-                width: 14
+                color: 'rgba(0,0,0,0.25)',
+                width: 12
             })
         })
     });
