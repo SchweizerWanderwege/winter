@@ -614,6 +614,16 @@ document.addEventListener('DOMContentLoaded', function() {
             'route-distance-value'
         );
 
+    var distanceLimitMin =
+        document.getElementById(
+            'route-distance-limit-min'
+        );
+
+    var distanceLimitMax =
+        document.getElementById(
+            'route-distance-limit-max'
+        );
+
     var selectedDistanceMinimum = null;
     var selectedDistanceMaximum = null;
 
@@ -860,51 +870,108 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function getDistanceStatistics() {
-
         var distances = [];
 
         [
             jsonSource_Winterwanderwege_3,
             jsonSource_Schneeschuhwanderwege_1
         ].forEach(function (source) {
-
             source.getFeatures().forEach(function (feature) {
-
                 if (!routeMatchesMapFilters(feature)) {
                     return;
                 }
 
-                var km =
+                var distance =
                     Number(feature.get('LaengeR')) / 1000;
 
-                if (Number.isFinite(km)) {
-                    distances.push(km);
+                if (
+                    Number.isFinite(distance) &&
+                    distance >= 0
+                ) {
+                    distances.push(distance);
                 }
-
             });
-
         });
 
         if (distances.length === 0) {
             return null;
         }
 
+        var minimum =
+            Math.floor(
+                Math.min.apply(null, distances) * 10
+            ) / 10;
+
+        var maximum =
+            Math.ceil(
+                Math.max.apply(null, distances) * 10
+            ) / 10;
+
+        if (minimum === maximum) {
+            maximum = minimum + 0.1;
+        }
+
         return {
-            min: Math.min(...distances),
-            max: Math.max(...distances)
+            min: minimum,
+            max: maximum
         };
     }
 
     function updateDistanceFilter() {
+        if (
+            !distanceSlider ||
+            !distanceValue ||
+            !distanceLimitMin ||
+            !distanceLimitMax
+        ) {
+            return;
+        }
 
         var stats = getDistanceStatistics();
 
         if (!stats) {
+            distanceValue.textContent =
+                'Keine verfügbaren Routen';
+
+            distanceLimitMin.textContent = 'Min.';
+            distanceLimitMax.textContent = 'Max.';
+
+            distanceSlider.setAttribute(
+                'disabled',
+                'disabled'
+            );
+
             return;
         }
 
-        if (!distanceSliderInitialized) {
+        distanceSlider.removeAttribute('disabled');
 
+        selectedDistanceMinimum = stats.min;
+        selectedDistanceMaximum = stats.max;
+
+        distanceLimitMin.textContent =
+            formatDistanceValue(stats.min);
+
+        distanceLimitMax.textContent =
+            formatDistanceValue(stats.max);
+
+        distanceValue.textContent =
+            formatDistanceValue(stats.min) +
+            ' bis ' +
+            formatDistanceValue(stats.max);
+
+        var tooltipFormatter = {
+            to: function (value) {
+                return formatDistanceValue(value);
+            },
+            from: function (value) {
+                return Number(
+                    String(value).replace(',', '.')
+                );
+            }
+        };
+
+        if (!distanceSliderInitialized) {
             noUiSlider.create(
                 distanceSlider,
                 {
@@ -917,14 +984,17 @@ document.addEventListener('DOMContentLoaded', function() {
                     range: {
                         min: stats.min,
                         max: stats.max
-                    }
+                    },
+                    tooltips: [
+                        tooltipFormatter,
+                        tooltipFormatter
+                    ]
                 }
             );
 
             distanceSlider.noUiSlider.on(
                 'update',
                 function (values) {
-
                     selectedDistanceMinimum =
                         Number(values[0]);
 
@@ -939,29 +1009,27 @@ document.addEventListener('DOMContentLoaded', function() {
                         formatDistanceValue(
                             selectedDistanceMaximum
                         );
-
                 }
             );
 
             distanceSliderInitialized = true;
-
-        } else {
-
-            distanceSlider.noUiSlider.updateOptions(
-                {
-                    range: {
-                        min: stats.min,
-                        max: stats.max
-                    },
-                    start: [
-                        stats.min,
-                        stats.max
-                    ]
-                },
-                true
-            );
-
+            return;
         }
+
+        distanceSlider.noUiSlider.updateOptions(
+            {
+                range: {
+                    min: stats.min,
+                    max: stats.max
+                },
+                start: [
+                    stats.min,
+                    stats.max
+                ],
+                step: 0.1
+            },
+            true
+        );
     }    
 
     function updateVisibleRouteList() {
@@ -1114,31 +1182,48 @@ document.addEventListener('DOMContentLoaded', function() {
 
     map.on('moveend', updateVisibleRouteList);
 
-    var winterRoutesLoaded = false;
-    var snowshoeRoutesLoaded = false;
-
-    function initializeDistanceSliderWhenReady() {
-        if (!winterRoutesLoaded || !snowshoeRoutesLoaded) {
-            return;
-        }
-
+    function handleRouteSourceReady() {
         updateVisibleRouteList();
-        updateDistanceFilter();
+
+        if (
+            routeSearchFilters &&
+            !routeSearchFilters.hidden
+        ) {
+            updateDistanceFilter();
+        }
     }
 
     jsonSource_Winterwanderwege_3.on(
         'featuresloadend',
-        function () {
-            winterRoutesLoaded = true;
-            initializeDistanceSliderWhenReady();
-        }
+        handleRouteSourceReady
     );
 
     jsonSource_Schneeschuhwanderwege_1.on(
         'featuresloadend',
+        handleRouteSourceReady
+    );
+
+    jsonSource_Winterwanderwege_3.on(
+        'change',
         function () {
-            snowshoeRoutesLoaded = true;
-            initializeDistanceSliderWhenReady();
+            if (
+                jsonSource_Winterwanderwege_3.getState() ===
+                'ready'
+            ) {
+                handleRouteSourceReady();
+            }
+        }
+    );
+
+    jsonSource_Schneeschuhwanderwege_1.on(
+        'change',
+        function () {
+            if (
+                jsonSource_Schneeschuhwanderwege_1.getState() ===
+                'ready'
+            ) {
+                handleRouteSourceReady();
+            }
         }
     );
     routeList.addEventListener('click', function (event) {
@@ -1321,22 +1406,26 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
     if (
-            routeSearchFilters &&
-            routeSearchFiltersToggle
-        ) {
-            routeSearchFiltersToggle.addEventListener(
-                'click',
-                function () {
+        routeSearchFilters &&
+        routeSearchFiltersToggle
+    ) {
+        routeSearchFiltersToggle.addEventListener(
+            'click',
+            function () {
+                routeSearchFilters.hidden =
+                    !routeSearchFilters.hidden;
 
-                    if (routeSearchFilters.hidden) {
-                        routeSearchFilters.hidden = false;
-                    } else {
-                        routeSearchFilters.hidden = true;
-                    }
+                routeSearchFiltersToggle.setAttribute(
+                    'aria-expanded',
+                    String(!routeSearchFilters.hidden)
+                );
 
+                if (!routeSearchFilters.hidden) {
+                    updateDistanceFilter();
                 }
-            );
-        }
+            }
+        );
+    }
 
     applyMapFilters();
 })();
