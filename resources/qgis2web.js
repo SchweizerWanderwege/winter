@@ -595,7 +595,7 @@ document.addEventListener('DOMContentLoaded', function() {
         zIndex: 1,
         style: new ol.style.Style({
             stroke: new ol.style.Stroke({
-                color: 'rgba(0,0,0,0.35)',
+                color: 'rgba(150,0,0,0.25)',
                 width: 12
             })
         })
