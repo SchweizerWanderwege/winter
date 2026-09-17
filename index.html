@@ -103,6 +103,53 @@
                 ×
             </button>
         </div>
+
+        <div id="map-selection" class="map-selection">
+            <div class="map-selection-pill map-selection-route-types">
+                <button
+                    class="map-selection-segment is-active"
+                    type="button"
+                    data-map-filter="www"
+                    aria-pressed="true"
+                    title="Winterwanderwege anzeigen"
+                >
+                    WWW
+                </button>
+
+                <button
+                    class="map-selection-segment is-active"
+                    type="button"
+                    data-map-filter="ssww"
+                    aria-pressed="true"
+                    title="Schneeschuhwanderwege anzeigen"
+                >
+                    SSWW
+                </button>
+            </div>
+
+            <div class="map-selection-pill map-selection-network-types">
+                <button
+                    class="map-selection-segment is-active"
+                    type="button"
+                    data-map-filter="bestof"
+                    aria-pressed="true"
+                    title="Best-of-Routen anzeigen"
+                >
+                    Best-of
+                </button>
+
+                <button
+                    class="map-selection-segment is-active"
+                    type="button"
+                    data-map-filter="basisnetz"
+                    aria-pressed="true"
+                    title="Basisnetz anzeigen"
+                >
+                    Basisnetz
+                </button>
+            </div>
+        </div>
+        
         <div id="map">
             <div id="popup" class="ol-popup">
                 <a href="#" id="popup-closer" class="ol-popup-closer"></a>
