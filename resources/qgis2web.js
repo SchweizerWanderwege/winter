@@ -1114,14 +1114,32 @@ document.addEventListener('DOMContentLoaded', function() {
 
     map.on('moveend', updateVisibleRouteList);
 
-    jsonSource_Schneeschuhwanderwege_1.on(
-        'featuresloadend',
-        updateVisibleRouteList
-    );
+    var winterRoutesLoaded = false;
+    var snowshoeRoutesLoaded = false;
+
+    function initializeDistanceSliderWhenReady() {
+        if (!winterRoutesLoaded || !snowshoeRoutesLoaded) {
+            return;
+        }
+
+        updateVisibleRouteList();
+        updateDistanceFilter();
+    }
 
     jsonSource_Winterwanderwege_3.on(
         'featuresloadend',
-        updateVisibleRouteList
+        function () {
+            winterRoutesLoaded = true;
+            initializeDistanceSliderWhenReady();
+        }
+    );
+
+    jsonSource_Schneeschuhwanderwege_1.on(
+        'featuresloadend',
+        function () {
+            snowshoeRoutesLoaded = true;
+            initializeDistanceSliderWhenReady();
+        }
     );
     routeList.addEventListener('click', function (event) {
 
