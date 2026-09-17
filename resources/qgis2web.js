@@ -674,6 +674,58 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var durationSliderInitialized = false;
 
+    var conditionFilter =
+        document.getElementById(
+            'condition-filter'
+        );
+
+    var conditionFilters = {
+        leicht: true,
+        mittel: true,
+        schwer: true
+    };
+    var technicalFilterSection =
+        document.getElementById(
+            'technical-filter-section'
+        );
+
+    var technicalFilter =
+        document.getElementById(
+            'technical-filter'
+        );
+
+    var technicalFilters = {
+        leicht: true,
+        mittel: true,
+        schwer: true
+    };
+
+    var altitudeSlider =
+        document.getElementById(
+            'route-altitude-slider'
+        );
+
+    var altitudeValue =
+        document.getElementById(
+            'route-altitude-value'
+        );
+
+    var altitudeLimitMin =
+        document.getElementById(
+            'route-altitude-limit-min'
+        );
+
+    var altitudeLimitMax =
+        document.getElementById(
+            'route-altitude-limit-max'
+        );
+
+    var selectedAltitudeMinimum = null;
+    var selectedAltitudeMaximum = null;
+
+    var altitudeSliderInitialized = false;
+
+
     map.addLayer(selectedRouteLayer);
     var routeList = document.getElementById('route-list');
     var routeStatus = document.getElementById('route-panel-status');
@@ -735,6 +787,15 @@ document.addEventListener('DOMContentLoaded', function() {
             );
 
         return routeTypeMatches && networkTypeMatches;
+    }
+
+    function updateTechnicalFilterVisibility() {
+        if (!technicalFilterSection) {
+            return;
+        }
+
+        technicalFilterSection.hidden =
+            !mapFilters.ssww;
     }
 
     function applyOriginalStyle(style, feature, resolution) {
@@ -802,8 +863,14 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
+        updateTechnicalFilterVisibility();
         updateVisibleRouteList();
-        updateDistanceFilter();
+
+        if (routeSourcesInitialized) {
+            updateDistanceFilter();
+            updateDurationFilter();
+            updateAltitudeFilter();
+        }
     }
     var routeSearchInput = document.getElementById('route-search-input');
     var routeSearchClear = document.getElementById('route-search-clear');
@@ -992,6 +1059,20 @@ document.addEventListener('DOMContentLoaded', function() {
         );
     }
 
+    function formatAltitudeValue(value) {
+        var metres = Math.round(
+            Number(value)
+        );
+
+        if (!Number.isFinite(metres)) {
+            return 'Keine Angabe';
+        }
+
+        return metres.toLocaleString(
+            'de-CH'
+        ) + ' m';
+    }
+
     function getDistanceStatistics() {
         var distances = [];
 
@@ -1098,6 +1179,94 @@ document.addEventListener('DOMContentLoaded', function() {
             )
         };
     }    
+
+    function getAltitudeStatistics() {
+        var minimumHeights = [];
+        var maximumHeights = [];
+
+        [
+            jsonSource_Winterwanderwege_3,
+            jsonSource_Schneeschuhwanderwege_1
+        ].forEach(function (source) {
+            source.getFeatures().forEach(
+                function (feature) {
+                    if (
+                        !routeMatchesMapFilters(
+                            feature
+                        )
+                    ) {
+                        return;
+                    }
+
+                    var minimumHeight =
+                        Number(
+                            feature.get(
+                                'HoeheMinR'
+                            )
+                        );
+
+                    var maximumHeight =
+                        Number(
+                            feature.get(
+                                'HoeheMaxR'
+                            )
+                        );
+
+                    if (
+                        Number.isFinite(
+                            minimumHeight
+                        )
+                    ) {
+                        minimumHeights.push(
+                            minimumHeight
+                        );
+                    }
+
+                    if (
+                        Number.isFinite(
+                            maximumHeight
+                        )
+                    ) {
+                        maximumHeights.push(
+                            maximumHeight
+                        );
+                    }
+                }
+            );
+        });
+
+        if (
+            minimumHeights.length === 0 ||
+            maximumHeights.length === 0
+        ) {
+            return null;
+        }
+
+        var minimum =
+            Math.floor(
+                Math.min.apply(
+                    null,
+                    minimumHeights
+                ) / 50
+            ) * 50;
+
+        var maximum =
+            Math.ceil(
+                Math.max.apply(
+                    null,
+                    maximumHeights
+                ) / 50
+            ) * 50;
+
+        if (minimum === maximum) {
+            maximum = minimum + 50;
+        }
+
+        return {
+            min: minimum,
+            max: maximum
+        };
+    }
 
     function updateDistanceFilter() {
         if (
@@ -1326,6 +1495,136 @@ document.addEventListener('DOMContentLoaded', function() {
                 true
             );
     }
+
+    function updateAltitudeFilter() {
+        if (
+            !altitudeSlider ||
+            !altitudeValue ||
+            !altitudeLimitMin ||
+            !altitudeLimitMax
+        ) {
+            return;
+        }
+
+        var stats =
+            getAltitudeStatistics();
+
+        if (!stats) {
+            altitudeValue.textContent =
+                'Keine Höhenangaben';
+
+            altitudeLimitMin.textContent =
+                'Min.';
+
+            altitudeLimitMax.textContent =
+                'Max.';
+
+            return;
+        }
+
+        selectedAltitudeMinimum =
+            stats.min;
+
+        selectedAltitudeMaximum =
+            stats.max;
+
+        altitudeLimitMin.textContent =
+            formatAltitudeValue(
+                stats.min
+            );
+
+        altitudeLimitMax.textContent =
+            formatAltitudeValue(
+                stats.max
+            );
+
+        altitudeValue.textContent =
+            formatAltitudeValue(
+                stats.min
+            ) +
+            ' bis ' +
+            formatAltitudeValue(
+                stats.max
+            );
+
+        var altitudeTooltipFormatter = {
+            to: function (value) {
+                return formatAltitudeValue(
+                    value
+                );
+            },
+            from: function (value) {
+                return Number(
+                    String(value)
+                        .replace(',', '.')
+                );
+            }
+        };
+
+        if (!altitudeSliderInitialized) {
+            noUiSlider.create(
+                altitudeSlider,
+                {
+                    start: [
+                        stats.min,
+                        stats.max
+                    ],
+                    connect: true,
+                    orientation: 'vertical',
+                    direction: 'ltr',
+                    step: 50,
+                    range: {
+                        min: stats.min,
+                        max: stats.max
+                    },
+                    tooltips: [
+                        altitudeTooltipFormatter,
+                        altitudeTooltipFormatter
+                    ]
+                }
+            );
+
+            altitudeSlider.noUiSlider.on(
+                'update',
+                function (values) {
+                    selectedAltitudeMinimum =
+                        Number(values[0]);
+
+                    selectedAltitudeMaximum =
+                        Number(values[1]);
+
+                    altitudeValue.textContent =
+                        formatAltitudeValue(
+                            selectedAltitudeMinimum
+                        ) +
+                        ' bis ' +
+                        formatAltitudeValue(
+                            selectedAltitudeMaximum
+                        );
+                }
+            );
+
+            altitudeSliderInitialized =
+                true;
+
+            return;
+        }
+
+        altitudeSlider.noUiSlider.updateOptions(
+            {
+                range: {
+                    min: stats.min,
+                    max: stats.max
+                },
+                start: [
+                    stats.min,
+                    stats.max
+                ],
+                step: 50
+            },
+            true
+        );
+    }    
 
     function updateVisibleRouteList() {
         var extent = map.getView().calculateExtent(map.getSize());
@@ -1980,6 +2279,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (availableFeatureCount > 0) {
                 updateDistanceFilter();
                 updateDurationFilter();
+                updateAltitudeFilter();
         }
     }
 
@@ -2011,6 +2311,95 @@ document.addEventListener('DOMContentLoaded', function() {
         mapFiltersClose.addEventListener(
             'click',
             closeMapFiltersPanel
+        );
+    }
+
+    if (conditionFilter) {
+        conditionFilter.addEventListener(
+            'click',
+            function (event) {
+                var button = event.target.closest(
+                    '[data-condition-filter]'
+                );
+
+                if (!button) {
+                    return;
+                }
+
+                var condition =
+                    button.getAttribute(
+                        'data-condition-filter'
+                    );
+
+                if (
+                    !Object.prototype
+                        .hasOwnProperty.call(
+                            conditionFilters,
+                            condition
+                        )
+                ) {
+                    return;
+                }
+
+                conditionFilters[condition] =
+                    !conditionFilters[condition];
+
+                button.classList.toggle(
+                    'is-active',
+                    conditionFilters[condition]
+                );
+
+                button.setAttribute(
+                    'aria-pressed',
+                    String(
+                        conditionFilters[condition]
+                    )
+                );
+            }
+        );
+    }
+
+    if (technicalFilter) {
+        technicalFilter.addEventListener(
+            'click',
+            function (event) {
+                var button = event.target.closest(
+                    '[data-technical-filter]'
+                );
+
+                if (!button) {
+                    return;
+                }
+
+                var technicalLevel =
+                    button.getAttribute(
+                        'data-technical-filter'
+                    );
+
+                if (
+                    !Object.prototype.hasOwnProperty.call(
+                        technicalFilters,
+                        technicalLevel
+                    )
+                ) {
+                    return;
+                }
+
+                technicalFilters[technicalLevel] =
+                    !technicalFilters[technicalLevel];
+
+                button.classList.toggle(
+                    'is-active',
+                    technicalFilters[technicalLevel]
+                );
+
+                button.setAttribute(
+                    'aria-pressed',
+                    String(
+                        technicalFilters[technicalLevel]
+                    )
+                );
+            }
         );
     }
 
