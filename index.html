@@ -320,7 +320,7 @@
                     </div>
                 </section>
 
-                <section
+                 <section
                     id="altitude-filter-section"
                     class="map-filter-section"
                 >
@@ -335,32 +335,87 @@
                         </span>
                     </div>
 
-                    <div class="altitude-filter-layout">
+                    <div class="altitude-mountain-control">
 
-                        <div class="altitude-mountain" aria-hidden="true">
-                            <div class="altitude-mountain-back"></div>
-                            <div class="altitude-mountain-front"></div>
-                        </div>
+                        <span
+                            id="route-altitude-limit-max"
+                            class="altitude-scale-limit altitude-scale-limit-max"
+                        >
+                            Max.
+                        </span>
 
-                        <div class="altitude-slider-area">
+                        <div class="altitude-mountain-graphic">
 
-                            <span
-                                id="route-altitude-limit-max"
-                                class="altitude-limit altitude-limit-max"
+                            <svg
+                                class="altitude-mountain-svg"
+                                viewBox="0 0 280 220"
+                                preserveAspectRatio="none"
+                                aria-hidden="true"
                             >
-                                Max.
-                            </span>
+                                <defs>
+                                    <clipPath id="altitude-mountain-clip">
+                                        <polygon
+                                            points="
+                                                15,205
+                                                48,150
+                                                70,168
+                                                91,121
+                                                110,139
+                                                147,40
+                                                183,124
+                                                204,96
+                                                265,205
+                                            "
+                                        ></polygon>
+                                    </clipPath>
+                                </defs>
+
+                                <rect
+                                    class="altitude-mountain-base"
+                                    x="0"
+                                    y="0"
+                                    width="280"
+                                    height="220"
+                                    clip-path="url(#altitude-mountain-clip)"
+                                ></rect>
+
+                                <rect
+                                    id="altitude-mountain-selection"
+                                    class="altitude-mountain-selection"
+                                    x="0"
+                                    y="0"
+                                    width="280"
+                                    height="220"
+                                    clip-path="url(#altitude-mountain-clip)"
+                                ></rect>
+
+                                <polyline
+                                    class="altitude-mountain-outline"
+                                    points="
+                                        15,205
+                                        48,150
+                                        70,168
+                                        91,121
+                                        110,139
+                                        147,40
+                                        183,124
+                                        204,96
+                                        265,205
+                                        15,205
+                                    "
+                                ></polyline>
+                            </svg>
 
                             <div id="route-altitude-slider"></div>
 
-                            <span
-                                id="route-altitude-limit-min"
-                                class="altitude-limit altitude-limit-min"
-                            >
-                                Min.
-                            </span>
-
                         </div>
+
+                        <span
+                            id="route-altitude-limit-min"
+                            class="altitude-scale-limit altitude-scale-limit-min"
+                        >
+                            Min.
+                        </span>
 
                     </div>
                 </section>
