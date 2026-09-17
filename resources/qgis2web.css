@@ -875,3 +875,13 @@ td video {
 .map-selection-network-types .map-selection-segment.is-active:focus {
     background: #393939;
 }
+.map-selection-route-types
+[data-map-filter="ssww"].is-active {
+    background: #7a1f5c;
+}
+.map-selection-route-types
+[data-map-filter="ssww"].is-active:hover,
+.map-selection-route-types
+[data-map-filter="ssww"].is-active:focus {
+    background: #65194c;
+}
