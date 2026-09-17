@@ -1472,152 +1472,167 @@ td video {
     font-variant-numeric: tabular-nums;
 }
 
-.altitude-filter-layout {
-    position: relative;
-    display: grid;
-    grid-template-columns: 1fr 102px;
-    gap: 12px;
-    height: 230px;
-    margin-top: 4px;
-    overflow: hidden;
-    background:
-        linear-gradient(
-            to bottom,
-            rgba(225, 235, 240, 0.42),
-            rgba(245, 245, 245, 0.18)
-        );
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    border-radius: 14px;
+.route-altitude-value {
+    color: #555;
+    font-weight: 400;
+    font-variant-numeric: tabular-nums;
 }
 
-.altitude-mountain {
-    position: relative;
-    min-width: 0;
-    overflow: hidden;
+.route-altitude-value {
+    color: #555;
+    font-weight: 400;
+    font-variant-numeric: tabular-nums;
 }
 
-.altitude-mountain-back {
+.altitude-mountain-control {
+    position: relative;
+    height: 250px;
+    overflow: visible;
+}
+
+.altitude-mountain-graphic {
     position: absolute;
-    right: -8%;
-    bottom: 0;
-    width: 112%;
-    height: 72%;
-    background: rgba(110, 120, 126, 0.16);
-    clip-path: polygon(
-        0 100%,
-        0 80%,
-        15% 63%,
-        26% 72%,
-        44% 34%,
-        57% 57%,
-        72% 22%,
-        83% 48%,
-        100% 30%,
-        100% 100%
-    );
+    top: 22px;
+    right: 8px;
+    bottom: 22px;
+    left: 8px;
 }
 
-.altitude-mountain-front {
+.altitude-mountain-svg {
     position: absolute;
-    right: -12%;
-    bottom: 0;
-    width: 118%;
-    height: 58%;
-    background: rgba(77, 77, 77, 0.18);
-    clip-path: polygon(
-        0 100%,
-        0 73%,
-        18% 48%,
-        30% 67%,
-        48% 21%,
-        63% 58%,
-        78% 37%,
-        100% 66%,
-        100% 100%
-    );
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
 }
 
-.altitude-slider-area {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 29px 12px;
-    background: rgba(255, 255, 255, 0.4);
-    border-left: 1px solid rgba(0, 0, 0, 0.08);
+.altitude-mountain-base {
+    fill: rgba(100, 108, 113, 0.18);
+}
+
+.altitude-mountain-selection {
+    fill: rgba(230, 0, 126, 0.58);
+    transition:
+        y 100ms ease,
+        height 100ms ease;
+}
+
+.altitude-mountain-outline {
+    fill: none;
+    stroke: #303030;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    vector-effect: non-scaling-stroke;
+}
+
+.altitude-scale-limit {
+    position: absolute;
+    right: 8px;
+    z-index: 4;
+    padding: 2px 6px;
+    color: #555;
+    background: rgba(255, 255, 255, 0.88);
+    border-radius: 8px;
+    font-size: 9px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+
+.altitude-scale-limit-max {
+    top: 0;
+}
+
+.altitude-scale-limit-min {
+    bottom: 0;
 }
 
 #route-altitude-slider {
-    width: 6px;
-    height: 164px;
+    position: absolute;
+    top: 18%;
+    right: 0;
+    bottom: 7%;
+    left: 0;
+    width: 100%;
+    height: auto;
 }
 
 #route-altitude-slider.noUi-target {
-    background: #d7d7d7;
+    background: transparent;
     border: 0;
-    border-radius: 3px;
     box-shadow: none;
 }
 
 #route-altitude-slider .noUi-base,
 #route-altitude-slider .noUi-connects {
-    width: 6px;
-    border-radius: 3px;
+    width: 100%;
+    height: 100%;
+}
+
+#route-altitude-slider .noUi-connects {
+    overflow: visible;
 }
 
 #route-altitude-slider .noUi-connect {
-    background: #e6007e;
+    background: transparent;
+}
+
+#route-altitude-slider .noUi-origin {
+    left: 0;
+    width: 100%;
 }
 
 #route-altitude-slider .noUi-handle {
-    width: 20px;
-    height: 20px;
-    right: -7px;
+    right: 0;
+    left: 0;
+    width: 100%;
+    height: 22px;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+    cursor: ns-resize;
+}
+
+#route-altitude-slider .noUi-handle::before {
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    left: 14px;
+    display: block;
+    width: auto;
+    height: 2px;
+    background: #e6007e;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.8);
+    content: "";
+}
+
+#route-altitude-slider .noUi-handle::after {
+    position: absolute;
+    top: 3px;
+    right: 7px;
+    display: block;
+    width: 16px;
+    height: 16px;
+    background: #fff;
     border: 2px solid #e6007e;
     border-radius: 50%;
-    background: #fff;
-    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.28);
-    cursor: grab;
-}
-
-#route-altitude-slider .noUi-handle:active {
-    cursor: grabbing;
-}
-
-#route-altitude-slider .noUi-handle::before,
-#route-altitude-slider .noUi-handle::after {
-    display: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.28);
+    content: "";
 }
 
 #route-altitude-slider .noUi-tooltip {
     top: 50%;
-    right: 25px;
+    right: 30px;
     bottom: auto;
     left: auto;
-    padding: 3px 6px;
+    padding: 3px 7px;
     color: #333;
-    background: rgba(255, 255, 255, 0.94);
-    border: 1px solid rgba(0, 0, 0, 0.12);
-    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid rgba(0, 0, 0, 0.14);
+    border-radius: 9px;
     font-size: 9px;
     font-weight: 700;
     white-space: nowrap;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.14);
     transform: translateY(-50%);
-}
-
-.altitude-limit {
-    position: absolute;
-    right: 8px;
-    color: #777;
-    font-size: 9px;
-    font-variant-numeric: tabular-nums;
-}
-
-.altitude-limit-max {
-    top: 7px;
-}
-
-.altitude-limit-min {
-    bottom: 7px;
 }

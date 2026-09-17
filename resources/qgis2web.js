@@ -720,6 +720,11 @@ document.addEventListener('DOMContentLoaded', function() {
             'route-altitude-limit-max'
         );
 
+    var altitudeMountainSelection =
+        document.getElementById(
+            'altitude-mountain-selection'
+        );
+
     var selectedAltitudeMinimum = null;
     var selectedAltitudeMaximum = null;
 
@@ -1496,6 +1501,76 @@ document.addEventListener('DOMContentLoaded', function() {
             );
     }
 
+    function updateAltitudeMountainSelection(
+        selectedMinimum,
+        selectedMaximum,
+        absoluteMinimum,
+        absoluteMaximum
+    ) {
+        if (!altitudeMountainSelection) {
+            return;
+        }
+
+        var completeRange =
+            absoluteMaximum - absoluteMinimum;
+
+        if (
+            !Number.isFinite(completeRange) ||
+            completeRange <= 0
+        ) {
+            return;
+        }
+
+        var minimumPercentage =
+            (
+                selectedMinimum -
+                absoluteMinimum
+            ) /
+            completeRange;
+
+        var maximumPercentage =
+            (
+                selectedMaximum -
+                absoluteMinimum
+            ) /
+            completeRange;
+
+        minimumPercentage =
+            Math.max(
+                0,
+                Math.min(1, minimumPercentage)
+            );
+
+        maximumPercentage =
+            Math.max(
+                0,
+                Math.min(1, maximumPercentage)
+            );
+
+        var svgHeight = 220;
+
+        var selectionTop =
+            svgHeight -
+            maximumPercentage * svgHeight;
+
+        var selectionBottom =
+            svgHeight -
+            minimumPercentage * svgHeight;
+
+        var selectionHeight =
+            selectionBottom - selectionTop;
+
+        altitudeMountainSelection.setAttribute(
+            'y',
+            String(selectionTop)
+        );
+
+        altitudeMountainSelection.setAttribute(
+            'height',
+            String(selectionHeight)
+        );
+    }
+
     function updateAltitudeFilter() {
         if (
             !altitudeSlider ||
@@ -1547,6 +1622,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 stats.max
             );
 
+        updateAltitudeMountainSelection(
+                stats.min,
+                stats.max,
+                stats.min,
+                stats.max
+            );
+
         var altitudeTooltipFormatter = {
             to: function (value) {
                 return formatAltitudeValue(
@@ -1571,7 +1653,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     ],
                     connect: true,
                     orientation: 'vertical',
-                    direction: 'ltr',
+                    direction: 'rtl',
                     step: 50,
                     range: {
                         min: stats.min,
@@ -1587,11 +1669,23 @@ document.addEventListener('DOMContentLoaded', function() {
             altitudeSlider.noUiSlider.on(
                 'update',
                 function (values) {
-                    selectedAltitudeMinimum =
+                    var firstValue =
                         Number(values[0]);
 
-                    selectedAltitudeMaximum =
+                    var secondValue =
                         Number(values[1]);
+
+                    selectedAltitudeMinimum =
+                        Math.min(
+                            firstValue,
+                            secondValue
+                        );
+
+                    selectedAltitudeMaximum =
+                        Math.max(
+                            firstValue,
+                            secondValue
+                        );
 
                     altitudeValue.textContent =
                         formatAltitudeValue(
@@ -1601,6 +1695,18 @@ document.addEventListener('DOMContentLoaded', function() {
                         formatAltitudeValue(
                             selectedAltitudeMaximum
                         );
+
+                    var currentStatistics =
+                        getAltitudeStatistics();
+
+                    if (currentStatistics) {
+                        updateAltitudeMountainSelection(
+                            selectedAltitudeMinimum,
+                            selectedAltitudeMaximum,
+                            currentStatistics.min,
+                            currentStatistics.max
+                        );
+                    }
                 }
             );
 
