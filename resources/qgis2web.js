@@ -825,6 +825,54 @@ document.addEventListener('DOMContentLoaded', function() {
         'featuresloadend',
         updateVisibleRouteList
     );
+    routeList.addEventListener('click', function (event) {
+
+        var button = event.target.closest('.route-list-item');
+
+        if (!button) {
+            return;
+        }
+
+        var routeId = button.dataset.routeId;
+
+        if (!routeId) {
+            return;
+        }
+
+        var feature = null;
+
+        [
+            jsonSource_Winterwanderwege_3,
+            jsonSource_Schneeschuhwanderwege_1
+        ].some(function (source) {
+
+            feature = source.getFeatures().find(function (candidate) {
+                return String(candidate.get('NrR_ID')) === routeId;
+            });
+
+            return !!feature;
+        });
+
+        if (!feature) {
+            return;
+        }
+
+        var geometry = feature.getGeometry();
+
+        if (!geometry) {
+            return;
+        }
+
+        map.getView().fit(
+            geometry.getExtent(),
+            {
+                padding: [80, 80, 80, 420],
+                duration: 600,
+                maxZoom: 15
+            }
+        );
+
+    });
 
     updateVisibleRouteList();
 })();
