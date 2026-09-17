@@ -733,6 +733,13 @@ document.addEventListener('DOMContentLoaded', function() {
     var routeSearchInput = document.getElementById('route-search-input');
     var routeSearchClear = document.getElementById('route-search-clear');
     var routeSearchTerm = '';
+    var routeSearchFilters =
+        document.getElementById('route-search-filters');
+
+    var routeSearchFiltersToggle =
+        document.getElementById(
+            'route-search-filters-toggle'
+        );
 
     if (!routeList || !routeStatus) {
         console.warn('Routenpanel wurde im HTML nicht gefunden.');
@@ -1159,6 +1166,24 @@ document.addEventListener('DOMContentLoaded', function() {
 
             applyMapFilters();
         });
+        
+    if (
+            routeSearchFilters &&
+            routeSearchFiltersToggle
+        ) {
+            routeSearchFiltersToggle.addEventListener(
+                'click',
+                function () {
+
+                    if (routeSearchFilters.hidden) {
+                        routeSearchFilters.hidden = false;
+                    } else {
+                        routeSearchFilters.hidden = true;
+                    }
+
+                }
+            );
+        }
 
     applyMapFilters();
 })();
