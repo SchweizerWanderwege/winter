@@ -1182,50 +1182,41 @@ document.addEventListener('DOMContentLoaded', function() {
 
     map.on('moveend', updateVisibleRouteList);
 
-    function handleRouteSourceReady() {
-        updateVisibleRouteList();
+    var winterRoutesLoaded = false;
+    var snowshoeRoutesLoaded = false;
+    var routeSourcesInitialized = false;
 
+    function initializeRouteSources() {
         if (
-            routeSearchFilters &&
-            !routeSearchFilters.hidden
+            !winterRoutesLoaded ||
+            !snowshoeRoutesLoaded ||
+            routeSourcesInitialized
         ) {
-            updateDistanceFilter();
+            return;
         }
+
+        routeSourcesInitialized = true;
+
+        updateVisibleRouteList();
+        updateDistanceFilter();
     }
 
-    jsonSource_Winterwanderwege_3.on(
+    jsonSource_Winterwanderwege_3.once(
         'featuresloadend',
-        handleRouteSourceReady
-    );
-
-    jsonSource_Schneeschuhwanderwege_1.on(
-        'featuresloadend',
-        handleRouteSourceReady
-    );
-
-    jsonSource_Winterwanderwege_3.on(
-        'change',
         function () {
-            if (
-                jsonSource_Winterwanderwege_3.getState() ===
-                'ready'
-            ) {
-                handleRouteSourceReady();
-            }
+            winterRoutesLoaded = true;
+            initializeRouteSources();
         }
     );
 
-    jsonSource_Schneeschuhwanderwege_1.on(
-        'change',
+    jsonSource_Schneeschuhwanderwege_1.once(
+        'featuresloadend',
         function () {
-            if (
-                jsonSource_Schneeschuhwanderwege_1.getState() ===
-                'ready'
-            ) {
-                handleRouteSourceReady();
-            }
+            snowshoeRoutesLoaded = true;
+            initializeRouteSources();
         }
     );
+
     routeList.addEventListener('click', function (event) {
 
         var button = event.target.closest('.route-list-item');
@@ -1271,6 +1262,10 @@ document.addEventListener('DOMContentLoaded', function() {
         );
 
         updateVisibleRouteList();
+
+        if (routeSourcesInitialized) {
+            updateDistanceFilter();
+        }
 
         map.getView().fit(
             geometry.getExtent(),
@@ -1420,7 +1415,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     String(!routeSearchFilters.hidden)
                 );
 
-                if (!routeSearchFilters.hidden) {
+                if (
+                    !routeSearchFilters.hidden &&
+                    routeSourcesInitialized
+                ) {
                     updateDistanceFilter();
                 }
             }
