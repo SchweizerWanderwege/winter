@@ -595,7 +595,7 @@ document.addEventListener('DOMContentLoaded', function() {
         zIndex: 1,
         style: new ol.style.Style({
             stroke: new ol.style.Stroke({
-                color: 'rgba(150,0,0,0.25)',
+                color: 'rgba(255,0,0,0.25)',
                 width: 12
             })
         })
@@ -604,6 +604,7 @@ document.addEventListener('DOMContentLoaded', function() {
     map.addLayer(selectedRouteLayer);
     var routeList = document.getElementById('route-list');
     var routeStatus = document.getElementById('route-panel-status');
+    var selectedRouteId = null;
 
     if (!routeList || !routeStatus) {
         console.warn('Routenpanel wurde im HTML nicht gefunden.');
@@ -773,8 +774,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
             var typeSymbol = isSnowshoe ? 'SS' : 'WW';
 
+            var activeClass =
+                route.id === selectedRouteId
+                    ? ' route-list-item-active'
+                    : '';
+
             return (
-                '<button class="route-list-item" ' +
+                '<button class="route-list-item' +
+                activeClass +
+                '" ' +
                 'type="button" ' +
                 'data-route-id="' + escapeHtml(route.id) + '">' +
 
@@ -846,6 +854,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         var routeId = button.dataset.routeId;
+        selectedRouteId = routeId;
 
         if (!routeId) {
             return;
@@ -879,6 +888,8 @@ document.addEventListener('DOMContentLoaded', function() {
         selectedRouteLayer.getSource().addFeature(
             feature.clone()
         );
+
+        updateVisibleRouteList();
 
         map.getView().fit(
             geometry.getExtent(),

@@ -644,3 +644,11 @@ td video {
     font-size: 11px;
     line-height: 1.2;
 }
+.route-list-item-active {
+    background: rgba(230, 0, 126, 0.12);
+    border-left: 4px solid #e6007e;
+}
+
+.route-list-item-active .route-list-name {
+    color: #111;
+}
