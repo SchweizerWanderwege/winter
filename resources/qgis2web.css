@@ -933,35 +933,6 @@ td video {
     outline: none;
 }
 
-.route-search-filters {
-    margin-top: 8px;
-    padding: 16px;
-
-    background: rgba(255,255,255,0.96);
-
-    border: 1px solid rgba(0,0,0,0.14);
-    border-radius: 16px;
-
-    box-shadow: 0 4px 18px rgba(0,0,0,0.22);
-
-    box-sizing: border-box;
-}
-.route-filter-section {
-    display: flex;
-    flex-direction: column;
-}
-
-.route-filter-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    margin-bottom: 16px;
-    color: #333;
-    font-size: 12px;
-    font-weight: 700;
-}
-
 .route-distance-value {
     color: #555;
     font-weight: 400;
@@ -1136,4 +1107,186 @@ td video {
     color: #666;
     font-size: 12px;
     line-height: 1.4;
+}
+.map-filters-open {
+    position: absolute;
+    top: 91px;
+    right: 16px;
+    z-index: 1100;
+    min-width: 82px;
+    height: 34px;
+    padding: 0 14px;
+    color: #333;
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid rgba(0, 0, 0, 0.16);
+    border-radius: 17px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.18);
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+.map-filters-open:hover,
+.map-filters-open:focus {
+    background: #fff;
+    border-color: rgba(230, 0, 126, 0.55);
+    outline: none;
+}
+
+.map-filters-open[hidden] {
+    display: none;
+}
+
+.map-filters-panel {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 1200;
+    display: flex;
+    flex-direction: column;
+    width: 340px;
+    max-height: calc(100vh - 32px);
+    background: rgba(255, 255, 255, 0.97);
+    border: 1px solid rgba(0, 0, 0, 0.14);
+    border-radius: 16px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.26);
+    box-sizing: border-box;
+    overflow: hidden;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.map-filters-panel[hidden] {
+    display: none;
+}
+
+.map-filters-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px 16px 13px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.map-filters-header h2 {
+    margin: 0;
+    color: #222;
+    font-size: 17px;
+    line-height: 1.25;
+}
+
+.map-filters-header p {
+    margin: 4px 0 0;
+    color: #777;
+    font-size: 10px;
+    line-height: 1.35;
+}
+
+.map-filters-close {
+    flex: 0 0 auto;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    color: #444;
+    background: transparent;
+    border: 0;
+    border-radius: 50%;
+    font-family: inherit;
+    font-size: 24px;
+    line-height: 28px;
+    cursor: pointer;
+}
+
+.map-filters-close:hover,
+.map-filters-close:focus {
+    color: #111;
+    background: rgba(0, 0, 0, 0.08);
+    outline: none;
+}
+
+.map-filters-content {
+    flex: 1 1 auto;
+    padding: 0 16px;
+    overflow-y: auto;
+}
+
+.map-filter-section {
+    padding: 17px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.09);
+}
+
+.map-filter-section:last-child {
+    border-bottom: 0;
+}
+
+.map-filter-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    margin-bottom: 15px;
+    color: #333;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.map-filter-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    color: #777;
+    font-size: 12px;
+}
+
+.map-filter-placeholder span:first-child {
+    color: #444;
+    font-weight: 700;
+}
+
+.map-filter-placeholder span:last-child {
+    padding: 3px 7px;
+    color: #999;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    font-size: 9px;
+}
+
+.map-filters-footer {
+    padding: 12px 16px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.map-filters-reset {
+    width: 100%;
+    min-height: 36px;
+    padding: 7px 12px;
+    color: #fff;
+    background: #4d4d4d;
+    border: 0;
+    border-radius: 18px;
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.map-filters-reset:disabled {
+    color: #999;
+    background: #e5e5e5;
+    cursor: default;
+}
+
+.map-filters-reset:not(:disabled):hover,
+.map-filters-reset:not(:disabled):focus {
+    background: #333;
+    outline: none;
+}
+
+.map-filters-panel #route-distance-slider {
+    margin-bottom: 28px;
 }

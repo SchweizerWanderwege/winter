@@ -604,6 +604,26 @@ document.addEventListener('DOMContentLoaded', function() {
         })
     });
 
+    var mapFiltersPanel =
+        document.getElementById(
+            'map-filters-panel'
+        );
+
+    var mapFiltersOpen =
+        document.getElementById(
+            'map-filters-open'
+        );
+
+    var mapFiltersClose =
+        document.getElementById(
+            'map-filters-close'
+        );
+
+    var mapFiltersReset =
+        document.getElementById(
+            'map-filters-reset'
+        );
+
     var distanceSlider =
         document.getElementById(
             'route-distance-slider'
@@ -766,13 +786,6 @@ document.addEventListener('DOMContentLoaded', function() {
     var routeSearchResults =
         document.getElementById(
             'route-search-results'
-        );
-    var routeSearchFilters =
-        document.getElementById('route-search-filters');
-
-    var routeSearchFiltersToggle =
-        document.getElementById(
-            'route-search-filters-toggle'
         );
 
     if (!routeList || !routeStatus) {
@@ -1586,7 +1599,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         );
     }
-    
+
     if (routeSearchResults) {
         routeSearchResults.addEventListener(
             'click',
@@ -1717,28 +1730,63 @@ document.addEventListener('DOMContentLoaded', function() {
             applyMapFilters();
         });
 
-    if (
-        routeSearchFilters &&
-        routeSearchFiltersToggle
-    ) {
-        routeSearchFiltersToggle.addEventListener(
+    function openMapFiltersPanel() {
+        if (
+            !mapFiltersPanel ||
+            !mapFiltersOpen
+        ) {
+            return;
+        }
+
+        mapFiltersPanel.hidden = false;
+        mapFiltersOpen.hidden = true;
+
+        mapFiltersOpen.setAttribute(
+            'aria-expanded',
+            'true'
+        );
+
+        var availableFeatureCount =
+            jsonSource_Winterwanderwege_3
+                .getFeatures()
+                .length +
+            jsonSource_Schneeschuhwanderwege_1
+                .getFeatures()
+                .length;
+
+        if (availableFeatureCount > 0) {
+            updateDistanceFilter();
+        }
+    }
+
+    function closeMapFiltersPanel() {
+        if (
+            !mapFiltersPanel ||
+            !mapFiltersOpen
+        ) {
+            return;
+        }
+
+        mapFiltersPanel.hidden = true;
+        mapFiltersOpen.hidden = false;
+
+        mapFiltersOpen.setAttribute(
+            'aria-expanded',
+            'false'
+        );
+    }
+
+    if (mapFiltersOpen) {
+        mapFiltersOpen.addEventListener(
             'click',
-            function () {
-                routeSearchFilters.hidden =
-                    !routeSearchFilters.hidden;
+            openMapFiltersPanel
+        );
+    }
 
-                routeSearchFiltersToggle.setAttribute(
-                    'aria-expanded',
-                    String(!routeSearchFilters.hidden)
-                );
-
-                if (
-                    !routeSearchFilters.hidden &&
-                    routeSourcesInitialized
-                ) {
-                    updateDistanceFilter();
-                }
-            }
+    if (mapFiltersClose) {
+        mapFiltersClose.addEventListener(
+            'click',
+            closeMapFiltersPanel
         );
     }
 
