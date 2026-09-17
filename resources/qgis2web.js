@@ -589,6 +589,9 @@ document.addEventListener('DOMContentLoaded', function() {
 	
 	// Add the control to the map
 	map.addControl(lastWorkedOnControl);
+
+
+// Function BLOCK
 (function () {
     var selectedRouteLayer = new ol.layer.Vector({
         source: new ol.source.Vector(),
@@ -600,6 +603,21 @@ document.addEventListener('DOMContentLoaded', function() {
             })
         })
     });
+
+    var distanceSlider =
+        document.getElementById(
+            'route-distance-slider'
+        );
+
+    var distanceValue =
+        document.getElementById(
+            'route-distance-value'
+        );
+
+    var selectedDistanceMinimum = null;
+    var selectedDistanceMaximum = null;
+
+    var distanceSliderInitialized = false;
 
     map.addLayer(selectedRouteLayer);
     var routeList = document.getElementById('route-list');
@@ -616,6 +634,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var originalWinterStyle = lyr_Winterwanderwege_3.getStyle();
     var originalSnowshoeStyle = lyr_Schneeschuhwanderwege_1.getStyle();
+
     function normalizeIsCHM(value) {
         if (
             value === 1 ||
@@ -729,6 +748,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         updateVisibleRouteList();
+        updateDistanceFilter();
     }
     var routeSearchInput = document.getElementById('route-search-input');
     var routeSearchClear = document.getElementById('route-search-clear');
@@ -828,6 +848,121 @@ document.addEventListener('DOMContentLoaded', function() {
 
         return metres.toLocaleString('de-CH') + ' m';
     }
+
+    function formatDistanceValue(value) {
+        return Number(value).toLocaleString(
+            'de-CH',
+            {
+                minimumFractionDigits: 1,
+                maximumFractionDigits: 1
+            }
+        ) + ' km';
+    }
+
+    function getDistanceStatistics() {
+
+        var distances = [];
+
+        [
+            jsonSource_Winterwanderwege_3,
+            jsonSource_Schneeschuhwanderwege_1
+        ].forEach(function (source) {
+
+            source.getFeatures().forEach(function (feature) {
+
+                if (!routeMatchesMapFilters(feature)) {
+                    return;
+                }
+
+                var km =
+                    Number(feature.get('LaengeR')) / 1000;
+
+                if (Number.isFinite(km)) {
+                    distances.push(km);
+                }
+
+            });
+
+        });
+
+        if (distances.length === 0) {
+            return null;
+        }
+
+        return {
+            min: Math.min(...distances),
+            max: Math.max(...distances)
+        };
+    }
+
+    function updateDistanceFilter() {
+
+        var stats = getDistanceStatistics();
+
+        if (!stats) {
+            return;
+        }
+
+        if (!distanceSliderInitialized) {
+
+            noUiSlider.create(
+                distanceSlider,
+                {
+                    start: [
+                        stats.min,
+                        stats.max
+                    ],
+                    connect: true,
+                    step: 0.1,
+                    range: {
+                        min: stats.min,
+                        max: stats.max
+                    }
+                }
+            );
+
+            distanceSlider.noUiSlider.on(
+                'update',
+                function (values) {
+
+                    selectedDistanceMinimum =
+                        Number(values[0]);
+
+                    selectedDistanceMaximum =
+                        Number(values[1]);
+
+                    distanceValue.textContent =
+                        formatDistanceValue(
+                            selectedDistanceMinimum
+                        ) +
+                        ' bis ' +
+                        formatDistanceValue(
+                            selectedDistanceMaximum
+                        );
+
+                }
+            );
+
+            distanceSliderInitialized = true;
+
+        } else {
+
+            distanceSlider.noUiSlider.updateOptions(
+                {
+                    range: {
+                        min: stats.min,
+                        max: stats.max
+                    },
+                    start: [
+                        stats.min,
+                        stats.max
+                    ]
+                },
+                true
+            );
+
+        }
+    }    
 
     function updateVisibleRouteList() {
         var extent = map.getView().calculateExtent(map.getSize());
@@ -1166,7 +1301,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             applyMapFilters();
         });
-        
+
     if (
             routeSearchFilters &&
             routeSearchFiltersToggle
