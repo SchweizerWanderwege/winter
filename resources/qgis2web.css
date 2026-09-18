@@ -1751,24 +1751,28 @@ td video {
 .route-list-item {
     gap: 4px;
     padding: 10px 11px;
-    background: rgba(255, 255, 255, 0.94);
+    background: rgba(255, 255, 255, 0.4);
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 11px;
     box-shadow: 0 2px 9px rgba(0, 0, 0, 0.14);
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(8px);
 }
 
 .route-list-item:hover,
 .route-list-item:focus {
-    background: rgba(255, 255, 255, 0.99);
+    background: rgba(255, 255, 255, 0.7);
     border-color: rgba(230, 0, 126, 0.35);
 }
 
 .route-list-item-active {
-    background: rgba(255, 246, 251, 0.98);
+    background: rgba(255, 246, 251, 0.7);
     border: 1px solid rgba(230, 0, 126, 0.72);
     box-shadow:
         0 2px 9px rgba(0, 0, 0, 0.14),
         0 0 0 2px rgba(230, 0, 126, 0.1);
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(8px);
 }
 
 .route-list-type {
@@ -1844,7 +1848,7 @@ td video {
 .route-list-item {
     gap: 4px;
     padding: 10px 11px;
-    background: rgba(255, 255, 255, 0.86);
+    background: rgba(255, 255, 255, 0.4);
     border: 1px solid rgba(255, 255, 255, 0.72);
     border-radius: 12px;
     box-shadow:
@@ -1856,16 +1860,18 @@ td video {
 
 .route-list-item:hover,
 .route-list-item:focus {
-    background: rgba(255, 255, 255, 0.96);
+    background: rgba(255, 255, 255, 0.7);
     border-color: rgba(230, 0, 126, 0.4);
 }
 
 .route-list-item-active {
-    background: rgba(255, 244, 250, 0.94);
+    background: rgba(255, 244, 250, 0.7);
     border-color: rgba(230, 0, 126, 0.78);
     box-shadow:
         0 3px 12px rgba(0, 0, 0, 0.16),
         0 0 0 2px rgba(230, 0, 126, 0.12);
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
 }
 
 .route-list-details {
@@ -2242,7 +2248,7 @@ body {
     background: rgba(255, 255, 255, 0.5);
     border: 0;
     box-shadow: none;
-    backdrop-filter: blur(3px);
+    backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
 }
 
@@ -2283,6 +2289,6 @@ body {
 .route-panel-header {
     padding: 10px 13px 8px;
     background: rgba(255, 255, 255, 0.42);
-    backdrop-filter: blur(3px);
+    backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
 }
