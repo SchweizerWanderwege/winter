@@ -614,11 +614,6 @@ document.addEventListener('DOMContentLoaded', function() {
             'map-filters-open'
         );
 
-    var mapFiltersClose =
-        document.getElementById(
-            'map-filters-close'
-        );
-
     var mapFiltersReset =
         document.getElementById(
             'map-filters-reset'
@@ -2701,19 +2696,28 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
     function openMapFiltersPanel() {
-        if (
-            !mapFiltersPanel ||
-            !mapFiltersOpen
-        ) {
+        if (!mapFiltersPanel || !mapFiltersOpen) {
             return;
         }
 
-        mapFiltersPanel.hidden = false;
-        mapFiltersOpen.hidden = true;
+        mapFiltersPanel.removeAttribute('hidden');
+
+        mapFiltersPanel.classList.remove(
+            'map-filters-panel-hidden'
+        );
+
+        mapFiltersPanel.setAttribute(
+            'aria-hidden',
+            'false'
+        );
 
         mapFiltersOpen.setAttribute(
             'aria-expanded',
             'true'
+        );
+
+        document.body.classList.add(
+            'map-filters-visible'
         );
 
         var availableFeatureCount =
@@ -2725,158 +2729,79 @@ document.addEventListener('DOMContentLoaded', function() {
                 .length;
 
         if (availableFeatureCount > 0) {
-                updateDistanceFilter();
-                updateDurationFilter();
-                updateAltitudeFilter();
+            updateDistanceFilter();
+            updateDurationFilter();
+            updateAltitudeFilter();
         }
     }
 
     function closeMapFiltersPanel() {
-        if (
-            !mapFiltersPanel ||
-            !mapFiltersOpen
-        ) {
+        if (!mapFiltersPanel || !mapFiltersOpen) {
             return;
         }
 
-        mapFiltersPanel.hidden = true;
-        mapFiltersOpen.hidden = false;
+        mapFiltersPanel.classList.add(
+            'map-filters-panel-hidden'
+        );
+
+        mapFiltersPanel.setAttribute(
+            'aria-hidden',
+            'true'
+        );
 
         mapFiltersOpen.setAttribute(
             'aria-expanded',
             'false'
         );
+
+        document.body.classList.remove(
+            'map-filters-visible'
+        );
     }
 
-    if (mapFiltersOpen) {
+    if (mapFiltersOpen && mapFiltersPanel) {
         mapFiltersOpen.addEventListener(
             'click',
-            openMapFiltersPanel
-        );
-    }
-
-    if (mapFiltersClose) {
-        mapFiltersClose.addEventListener(
-            'click',
-            closeMapFiltersPanel
-        );
-    }
-
-    if (conditionFilter) {
-        conditionFilter.addEventListener(
-            'click',
-            function (event) {
-                var button = event.target.closest(
-                    '[data-condition-filter]'
-                );
-
-                if (!button) {
-                    return;
-                }
-
-                var condition =
-                    button.getAttribute(
-                        'data-condition-filter'
+            function () {
+                var panelIsHidden =
+                    mapFiltersPanel.classList.contains(
+                        'map-filters-panel-hidden'
                     );
 
-                if (
-                    !Object.prototype
-                        .hasOwnProperty.call(
-                            conditionFilters,
-                            condition
-                        )
-                ) {
-                    return;
+                if (panelIsHidden) {
+                    openMapFiltersPanel();
+                } else {
+                    closeMapFiltersPanel();
                 }
 
-                conditionFilters[condition] =
-                    !conditionFilters[condition];
-
-                button.classList.toggle(
-                    'is-active',
-                    conditionFilters[condition]
-                );
-
-                button.setAttribute(
-                    'aria-pressed',
-                    String(
-                        conditionFilters[condition]
-                    )
-                );
-                refreshFilteredViews();
+                mapFiltersOpen.blur();
             }
         );
     }
-
-    if (technicalFilter) {
-        technicalFilter.addEventListener(
-            'click',
-            function (event) {
-                var button = event.target.closest(
-                    '[data-technical-filter]'
-                );
-
-                if (!button) {
-                    return;
-                }
-
-                var technicalLevel =
+    function setSegmentState(
+        selector,
+        stateObject
+    ) {
+        document
+            .querySelectorAll(selector)
+            .forEach(function (button) {
+                var key =
                     button.getAttribute(
-                        'data-technical-filter'
+                        selector.indexOf('condition') !== -1
+                            ? 'data-condition-filter'
+                            : 'data-technical-filter'
                     );
 
-                if (
-                    !Object.prototype.hasOwnProperty.call(
-                        technicalFilters,
-                        technicalLevel
-                    )
-                ) {
-                    return;
-                }
+                stateObject[key] = true;
 
-                technicalFilters[technicalLevel] =
-                    !technicalFilters[technicalLevel];
-
-                button.classList.toggle(
-                    'is-active',
-                    technicalFilters[technicalLevel]
-                );
+                button.classList.add('is-active');
 
                 button.setAttribute(
                     'aria-pressed',
-                    String(
-                        technicalFilters[technicalLevel]
-                    )
+                    'true'
                 );
-                refreshFilteredViews();
-            }
-        );
+            });
     }
-
-function setSegmentState(
-    selector,
-    stateObject
-) {
-    document
-        .querySelectorAll(selector)
-        .forEach(function (button) {
-            var key =
-                button.getAttribute(
-                    selector.indexOf('condition') !== -1
-                        ? 'data-condition-filter'
-                        : 'data-technical-filter'
-                );
-
-            stateObject[key] = true;
-
-            button.classList.add('is-active');
-
-            button.setAttribute(
-                'aria-pressed',
-                'true'
-            );
-        });
-}
 
     function resetRouteFilters() {
         statusFilters.realisiert = true;
