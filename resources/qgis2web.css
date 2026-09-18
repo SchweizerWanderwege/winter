@@ -2292,3 +2292,16 @@ body {
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
 }
+.filter-segmented-pill-four {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.status-filter-unknown.is-active {
+    color: #fff;
+    background: #777;
+}
+
+.status-filter-unknown.is-active:hover,
+.status-filter-unknown.is-active:focus {
+    background: #5f5f5f;
+}

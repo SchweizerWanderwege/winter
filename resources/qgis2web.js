@@ -742,7 +742,8 @@ document.addEventListener('DOMContentLoaded', function() {
     var statusFilters = {
         realisiert: true,
         geplant: false,
-        aufzuheben: false
+        aufzuheben: false,
+        '--': false
     };
 
 
@@ -979,13 +980,13 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function routeMatchesStatusFilter(feature) {
-        var status = normalizeFilterText(
-            feature.get('ReStR')
-        );
+        var rawStatus = feature.get('ReStR');
 
-        if (!status) {
-            return false;
-        }
+        var status =
+            rawStatus == null ||
+            String(rawStatus).trim() === ''
+                ? '--'
+                : normalizeFilterText(rawStatus);
 
         return statusFilters[status] === true;
     }
@@ -1173,7 +1174,8 @@ document.addEventListener('DOMContentLoaded', function() {
         var statusActive = !(
             statusFilters.realisiert &&
             !statusFilters.geplant &&
-            !statusFilters.aufzuheben
+            !statusFilters.aufzuheben &&
+            !statusFilters['--']
         );
 
         return (
@@ -2807,6 +2809,7 @@ document.addEventListener('DOMContentLoaded', function() {
         statusFilters.realisiert = true;
         statusFilters.geplant = false;
         statusFilters.aufzuheben = false;
+        statusFilters['--'] = false;
 
         document
             .querySelectorAll('[data-status-filter]')
@@ -2918,6 +2921,98 @@ document.addEventListener('DOMContentLoaded', function() {
                 );
 
                 refreshFilteredViews();
+            }
+        );
+    }
+
+    if (conditionFilter) {
+        conditionFilter.addEventListener(
+            'click',
+            function (event) {
+                var button = event.target.closest(
+                    '[data-condition-filter]'
+                );
+
+                if (!button) {
+                    return;
+                }
+
+                var condition =
+                    button.getAttribute(
+                        'data-condition-filter'
+                    );
+
+                if (
+                    !Object.prototype.hasOwnProperty.call(
+                        conditionFilters,
+                        condition
+                    )
+                ) {
+                    return;
+                }
+
+                conditionFilters[condition] =
+                    !conditionFilters[condition];
+
+                button.classList.toggle(
+                    'is-active',
+                    conditionFilters[condition]
+                );
+
+                button.setAttribute(
+                    'aria-pressed',
+                    String(conditionFilters[condition])
+                );
+
+                refreshFilteredViews();
+                button.blur();
+            }
+        );
+    }
+
+    if (technicalFilter) {
+        technicalFilter.addEventListener(
+            'click',
+            function (event) {
+                var button = event.target.closest(
+                    '[data-technical-filter]'
+                );
+
+                if (!button) {
+                    return;
+                }
+
+                var technicalLevel =
+                    button.getAttribute(
+                        'data-technical-filter'
+                    );
+
+                if (
+                    !Object.prototype.hasOwnProperty.call(
+                        technicalFilters,
+                        technicalLevel
+                    )
+                ) {
+                    return;
+                }
+
+                technicalFilters[technicalLevel] =
+                    !technicalFilters[technicalLevel];
+
+                button.classList.toggle(
+                    'is-active',
+                    technicalFilters[technicalLevel]
+                );
+
+                button.setAttribute(
+                    'aria-pressed',
+                    String(
+                        technicalFilters[technicalLevel]
+                    )
+                );
+
+                refreshFilteredViews();
+                button.blur();
             }
         );
     }
