@@ -6,6 +6,9 @@
         <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="resources/ol.css">
         <link rel="stylesheet" href="resources/fontawesome-all.min.css">
         <link rel="stylesheet" type="text/css" href="resources/horsey.min.css">
@@ -55,19 +58,9 @@
         >
             <div class="route-panel-header">
                 <div>
-                    <h1>Routen</h1>
+                    <h1>ROUTEN</h1>
                     <p id="route-panel-status">Routen werden geladen …</p>
                 </div>
-
-                <button
-                    id="route-panel-close"
-                    class="route-panel-close"
-                    type="button"
-                    title="Routenliste schliessen"
-                    aria-label="Routenliste schliessen"
-                >
-                    ×
-                </button>
             </div>
 
             <div class="route-panel-content">
@@ -79,10 +72,12 @@
             id="route-panel-open"
             class="route-panel-open"
             type="button"
-            title="Routenliste öffnen"
-            aria-label="Routenliste öffnen"
+            title="Routenliste öffnen oder schliessen"
+            aria-label="Routenliste öffnen oder schliessen"
+            aria-controls="route-panel"
+            aria-expanded="false"
         >
-            Routen
+            ROUTEN
         </button>
         <div class="route-search-container">
 
@@ -150,7 +145,7 @@
                     aria-pressed="true"
                     title="Best-of-Routen anzeigen"
                 >
-                    Best-of
+                    BEST-OF
                 </button>
 
                 <button
@@ -160,7 +155,7 @@
                     aria-pressed="true"
                     title="Basisnetz anzeigen"
                 >
-                    Basisnetz
+                    BASISNETZ
                 </button>
             </div>
         </div>
@@ -171,39 +166,30 @@
             type="button"
             aria-controls="map-filters-panel"
             aria-expanded="false"
-            title="Routenfilter öffnen"
+            aria-label="Routenfilter öffnen oder schliessen"
+            title="Routenfilter öffnen oder schliessen"
         >
-            Filter
+            FILTER
         </button>
 
         <aside
             id="map-filters-panel"
-            class="map-filters-panel"
+            class="map-filters-panel map-filters-panel-hidden"
             aria-label="Routenfilter"
-            hidden
+            aria-hidden="true"
         >
             <div class="map-filters-header">
                 <div>
-                    <h2>Routen filtern</h2>
+                    <h2>ROUTEN FILTERN</h2>
                     <p>Die Filter wirken auf Karte, Routenliste und Suche.</p>
                 </div>
-
-                <button
-                    id="map-filters-close"
-                    class="map-filters-close"
-                    type="button"
-                    aria-label="Routenfilter schliessen"
-                    title="Routenfilter schliessen"
-                >
-                    ×
-                </button>
             </div>
 
             <div class="map-filters-content">
 
                 <section class="map-filter-section">
                     <div class="map-filter-heading">
-                        <span>Status</span>
+                        <span>REALISIERUNGSSTATUS</span>
                     </div>
 
                     <div
@@ -241,7 +227,7 @@
 
                 <section class="map-filter-section">
                     <div class="map-filter-heading">
-                        <span>Distanz</span>
+                        <span>DISTANZ</span>
 
                         <span
                             id="route-distance-value"
@@ -262,7 +248,7 @@
                 <section class="map-filter-section">
 
                     <div class="map-filter-heading">
-                        <span>Dauer</span>
+                        <span>DAUER</span>
 
                         <span
                             id="route-duration-value"
@@ -283,7 +269,7 @@
 
                 <section class="map-filter-section">
                     <div class="map-filter-heading">
-                        <span>Konditionelle Schwierigkeit</span>
+                        <span>KÖRPERLICHE ANFORDERUNG</span>
                     </div>
 
                     <div
@@ -324,7 +310,7 @@
                     class="map-filter-section"
                 >
                     <div class="map-filter-heading">
-                        <span>Technische Schwierigkeit</span>
+                        <span>TECHNISCHE SCHWIERIGKEIT</span>
                     </div>
 
                     <div
@@ -365,7 +351,7 @@
                     class="map-filter-section"
                 >
                     <div class="map-filter-heading">
-                        <span>Höhenlage</span>
+                        <span>HÖHENLAGEN</span>
 
                         <span
                             id="route-altitude-value"
@@ -496,9 +482,38 @@
         <script src="resources/qgis2web.js"></script>
         <script>
         document.addEventListener('DOMContentLoaded', function () {
-            var routePanel = document.getElementById('route-panel');
-            var closeButton = document.getElementById('route-panel-close');
-            var openButton = document.getElementById('route-panel-open');
+            var routePanel =
+                document.getElementById('route-panel');
+
+            var routePanelToggle =
+                document.getElementById('route-panel-open');
+
+            if (routePanel && routePanelToggle) {
+                routePanelToggle.addEventListener(
+                    'click',
+                    function () {
+                        var panelIsHidden =
+                            routePanel.classList.contains(
+                                'route-panel-hidden'
+                            );
+
+                        routePanel.classList.toggle(
+                            'route-panel-hidden',
+                            !panelIsHidden
+                        );
+
+                        routePanelToggle.setAttribute(
+                            'aria-expanded',
+                            String(panelIsHidden)
+                        );
+
+                        document.body.classList.toggle(
+                            'route-panel-visible',
+                            panelIsHidden
+                        );
+                    }
+                );
+            }
 
             closeButton.addEventListener('click', function () {
                 routePanel.classList.add('route-panel-hidden');
