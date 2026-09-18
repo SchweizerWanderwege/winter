@@ -1806,3 +1806,117 @@ td video {
     padding: 1px 7px;
     font-size: 9px;
 }
+.route-panel {
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    overflow: visible;
+}
+
+.route-panel-header {
+    margin-bottom: 12px;
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+}
+
+.route-panel-content {
+    padding: 0 5px 8px;
+    background: transparent;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.route-panel-content::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+.route-list {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    background: transparent;
+}
+
+.route-list-item {
+    gap: 4px;
+    padding: 10px 11px;
+    background: rgba(255, 255, 255, 0.86);
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    border-radius: 12px;
+    box-shadow:
+        0 3px 12px rgba(0, 0, 0, 0.16),
+        0 0 0 1px rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+}
+
+.route-list-item:hover,
+.route-list-item:focus {
+    background: rgba(255, 255, 255, 0.96);
+    border-color: rgba(230, 0, 126, 0.4);
+}
+
+.route-list-item-active {
+    background: rgba(255, 244, 250, 0.94);
+    border-color: rgba(230, 0, 126, 0.78);
+    box-shadow:
+        0 3px 12px rgba(0, 0, 0, 0.16),
+        0 0 0 2px rgba(230, 0, 126, 0.12);
+}
+
+.route-list-details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+}
+
+.route-list-details-main {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3px;
+    min-width: 0;
+}
+
+.route-list-facts,
+.route-list-elevation {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    color: #555;
+    font-size: 11px;
+    line-height: 1.25;
+}
+
+.route-list-elevation {
+    gap: 12px;
+}
+
+.route-list-difficulty {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    min-width: 48px;
+    min-height: 24px;
+    padding: 3px 8px;
+    color: #444;
+    background: rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+    box-sizing: border-box;
+    font-size: 9px;
+    font-weight: 600;
+    line-height: 1.1;
+    text-align: center;
+}

@@ -2175,30 +2175,38 @@ document.addEventListener('DOMContentLoaded', function() {
                     escapeHtml(route.name) +
                     '</strong>' +
 
-                    '<span class="route-list-facts">' +
-                        '<span>' +
-                        escapeHtml(formatDistance(route.distance)) +
+                    '<span class="route-list-details">' +
+
+                        '<span class="route-list-details-main">' +
+
+                            '<span class="route-list-facts">' +
+                                '<span>' +
+                                escapeHtml(formatDistance(route.distance)) +
+                                '</span>' +
+
+                                '<span aria-hidden="true">·</span>' +
+
+                                '<span>' +
+                                escapeHtml(formatDuration(route.duration)) +
+                                '</span>' +
+                            '</span>' +
+
+                            '<span class="route-list-elevation">' +
+                                '<span>↑ ' +
+                                escapeHtml(formatElevation(route.ascent)) +
+                                '</span>' +
+
+                                '<span>↓ ' +
+                                escapeHtml(formatElevation(route.descent)) +
+                                '</span>' +
+                            '</span>' +
+
                         '</span>' +
 
-                        '<span aria-hidden="true">·</span>' +
-
-                        '<span>' +
-                        escapeHtml(formatDuration(route.duration)) +
-                        '</span>' +
-                    '</span>' +
-
-                    '<span class="route-list-elevation">' +
-                        '<span>↑ ' +
-                        escapeHtml(formatElevation(route.ascent)) +
+                        '<span class="route-list-difficulty">' +
+                        escapeHtml(route.difficulty || 'Keine Angabe') +
                         '</span>' +
 
-                        '<span>↓ ' +
-                        escapeHtml(formatElevation(route.descent)) +
-                        '</span>' +
-                    '</span>' +
-
-                    '<span class="route-list-difficulty">' +
-                    escapeHtml(route.difficulty || 'Keine Angabe') +
                     '</span>' +
 
                 '</button>'
