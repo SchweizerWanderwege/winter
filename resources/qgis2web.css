@@ -416,7 +416,7 @@ td video {
 .route-panel {
     position: absolute;
     top: 16px;
-    left: 64px;
+    left: 16px;
     z-index: 1000;
 
     width: 360px;
@@ -513,7 +513,7 @@ td video {
 .route-panel-open {
     position: absolute;
     top: 16px;
-    left: 64px;
+    left: 16px;
     z-index: 1000;
 
     min-height: 36px;
@@ -1635,4 +1635,174 @@ td video {
     background: transparent;
     border: 0;
     box-shadow: none;
+}
+.status-filter-realized.is-active {
+    color: #fff;
+    background: #357a38;
+}
+
+.status-filter-planned.is-active {
+    color: #fff;
+    background: #b56a00;
+}
+
+.status-filter-remove.is-active {
+    color: #fff;
+    background: #8a3030;
+}
+.map-filters-panel {
+    width: 330px;
+}
+
+.map-filters-header {
+    padding: 10px 13px 8px;
+}
+
+.map-filters-header h2 {
+    font-size: 14px;
+}
+
+.map-filters-header p {
+    display: none;
+}
+
+.map-filters-content {
+    padding: 0 13px;
+}
+
+.map-filter-section {
+    padding: 8px 0;
+}
+
+.map-filter-heading {
+    margin-bottom: 7px;
+    font-size: 11px;
+}
+
+.route-distance-limits {
+    margin-bottom: 5px;
+    font-size: 9px;
+}
+
+#route-distance-slider,
+#route-duration-slider {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.filter-segment {
+    min-height: 27px;
+    padding: 3px 5px;
+    font-size: 9px;
+}
+
+.altitude-mountain-control {
+    height: 185px;
+}
+
+.altitude-mountain-graphic {
+    top: 5px;
+    bottom: 5px;
+}
+
+.map-filters-footer {
+    padding: 7px 13px;
+}
+
+.map-filters-reset {
+    min-height: 29px;
+    font-size: 10px;
+}
+.ol-zoom,
+.ol-geocoder,
+.search-layer {
+    display: none;
+}
+.route-panel {
+    background: rgba(245, 245, 245, 0.48);
+    border: 0;
+    box-shadow: none;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.route-panel-header {
+    margin-bottom: 7px;
+    padding: 12px 14px 10px;
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.18);
+}
+
+.route-panel-header h1 {
+    font-size: 18px;
+}
+
+.route-panel-content {
+    padding: 0 4px 4px;
+    background: transparent;
+    overflow-y: auto;
+}
+
+.route-list {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.route-list-item {
+    gap: 4px;
+    padding: 10px 11px;
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 11px;
+    box-shadow: 0 2px 9px rgba(0, 0, 0, 0.14);
+}
+
+.route-list-item:hover,
+.route-list-item:focus {
+    background: rgba(255, 255, 255, 0.99);
+    border-color: rgba(230, 0, 126, 0.35);
+}
+
+.route-list-item-active {
+    background: rgba(255, 246, 251, 0.98);
+    border: 1px solid rgba(230, 0, 126, 0.72);
+    box-shadow:
+        0 2px 9px rgba(0, 0, 0, 0.14),
+        0 0 0 2px rgba(230, 0, 126, 0.1);
+}
+
+.route-list-type {
+    gap: 5px;
+    font-size: 10px;
+}
+
+.route-type-symbol {
+    min-width: 31px;
+    height: 18px;
+    padding: 0 5px;
+    font-size: 8px;
+}
+
+.route-list-name {
+    font-size: 13px;
+    line-height: 1.25;
+}
+
+.route-list-facts,
+.route-list-elevation {
+    gap: 6px;
+    font-size: 11px;
+}
+
+.route-list-elevation {
+    gap: 12px;
+}
+
+.route-list-difficulty {
+    min-height: 18px;
+    padding: 1px 7px;
+    font-size: 9px;
 }

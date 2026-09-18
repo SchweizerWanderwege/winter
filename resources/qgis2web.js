@@ -739,6 +739,17 @@ document.addEventListener('DOMContentLoaded', function() {
     var availableAltitudeMinimum = null;
     var availableAltitudeMaximum = null;
 
+    var statusFilter =
+        document.getElementById(
+            'status-filter'
+        );
+
+    var statusFilters = {
+        realisiert: true,
+        geplant: false,
+        aufzuheben: false
+    };
+
 
     map.addLayer(selectedRouteLayer);
     var routeList = document.getElementById('route-list');
@@ -972,9 +983,22 @@ document.addEventListener('DOMContentLoaded', function() {
         );
     }
 
+    function routeMatchesStatusFilter(feature) {
+        var status = normalizeFilterText(
+            feature.get('ReStR')
+        );
+
+        if (!status) {
+            return false;
+        }
+
+        return statusFilters[status] === true;
+    }
+
     function routeMatchesAllFilters(feature) {
         return (
             routeMatchesMapFilters(feature) &&
+            routeMatchesStatusFilter(feature) &&
             routeMatchesDistanceFilter(feature) &&
             routeMatchesDurationFilter(feature) &&
             routeMatchesConditionFilter(feature) &&
@@ -1151,7 +1175,14 @@ document.addEventListener('DOMContentLoaded', function() {
             technicalFilters.schwer
         );
 
+        var statusActive = !(
+            statusFilters.realisiert &&
+            !statusFilters.geplant &&
+            !statusFilters.aufzuheben
+        );
+
         return (
+            statusActive ||
             distanceActive ||
             durationActive ||
             altitudeActive ||
@@ -2840,6 +2871,28 @@ function setSegmentState(
 }
 
     function resetRouteFilters() {
+        statusFilters.realisiert = true;
+        statusFilters.geplant = false;
+        statusFilters.aufzuheben = false;
+
+        document
+            .querySelectorAll('[data-status-filter]')
+            .forEach(function (button) {
+                var status = button.getAttribute(
+                    'data-status-filter'
+                );
+
+                button.classList.toggle(
+                    'is-active',
+                    statusFilters[status]
+                );
+
+                button.setAttribute(
+                    'aria-pressed',
+                    String(statusFilters[status])
+                );
+            });
+
         setSegmentState(
             '[data-condition-filter]',
             conditionFilters
@@ -2890,6 +2943,49 @@ function setSegmentState(
         mapFiltersReset.addEventListener(
             'click',
             resetRouteFilters
+        );
+    }
+
+    if (statusFilter) {
+        statusFilter.addEventListener(
+            'click',
+            function (event) {
+                var button = event.target.closest(
+                    '[data-status-filter]'
+                );
+
+                if (!button) {
+                    return;
+                }
+
+                var status = button.getAttribute(
+                    'data-status-filter'
+                );
+
+                if (
+                    !Object.prototype.hasOwnProperty.call(
+                        statusFilters,
+                        status
+                    )
+                ) {
+                    return;
+                }
+
+                statusFilters[status] =
+                    !statusFilters[status];
+
+                button.classList.toggle(
+                    'is-active',
+                    statusFilters[status]
+                );
+
+                button.setAttribute(
+                    'aria-pressed',
+                    String(statusFilters[status])
+                );
+
+                refreshFilteredViews();
+            }
         );
     }
 
