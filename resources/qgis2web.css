@@ -1110,7 +1110,7 @@ td video {
 }
 .map-filters-open {
     position: absolute;
-    top: 134px;
+    top: 110px;
     right: 16px;
     z-index: 1100;
     min-width: 82px;
@@ -1142,13 +1142,13 @@ td video {
 
 .map-filters-panel {
     position: absolute;
-    top: 134px;
+    top: 110px;
     right: 16px;
     z-index: 1200;
     display: flex;
     flex-direction: column;
-    width: 340px;
-    max-height: calc(100vh - 150px);
+    width: 350px;
+    max-height: calc(100vh - 100px);
     background: rgba(255, 255, 255, 0.97);
     border: 1px solid rgba(0, 0, 0, 0.14);
     border-radius: 16px;
