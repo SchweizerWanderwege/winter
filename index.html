@@ -49,7 +49,10 @@
         <title></title>
     </head>
     <body>
-        <aside id="route-panel" class="route-panel">
+        <aside
+            id="route-panel"
+            class="route-panel route-panel-hidden"
+        >
             <div class="route-panel-header">
                 <div>
                     <h1>Routen</h1>
@@ -78,7 +81,6 @@
             type="button"
             title="Routenliste öffnen"
             aria-label="Routenliste öffnen"
-            hidden
         >
             Routen
         </button>
@@ -198,6 +200,44 @@
             </div>
 
             <div class="map-filters-content">
+
+                <section class="map-filter-section">
+                    <div class="map-filter-heading">
+                        <span>Status</span>
+                    </div>
+
+                    <div
+                        id="status-filter"
+                        class="filter-segmented-pill filter-segmented-pill-three"
+                    >
+                        <button
+                            class="filter-segment status-filter-realized is-active"
+                            type="button"
+                            data-status-filter="realisiert"
+                            aria-pressed="true"
+                        >
+                            realisiert
+                        </button>
+
+                        <button
+                            class="filter-segment status-filter-planned"
+                            type="button"
+                            data-status-filter="geplant"
+                            aria-pressed="false"
+                        >
+                            geplant
+                        </button>
+
+                        <button
+                            class="filter-segment status-filter-remove"
+                            type="button"
+                            data-status-filter="aufzuheben"
+                            aria-pressed="false"
+                        >
+                            aufzuheben
+                        </button>
+                    </div>
+                </section>
 
                 <section class="map-filter-section">
                     <div class="map-filter-heading">
