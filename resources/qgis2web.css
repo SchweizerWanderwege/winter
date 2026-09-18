@@ -993,7 +993,7 @@ td video {
 }
 
 #route-distance-slider .noUi-tooltip {
-    top: 25px;
+    top: 18px;
     bottom: auto;
     padding: 2px 5px;
     color: #444;
@@ -1326,7 +1326,7 @@ td video {
 }
 
 #route-duration-slider .noUi-tooltip {
-    top: 25px;
+    top: 18px;
     bottom: auto;
     padding: 2px 5px;
     border: 0;
@@ -1537,11 +1537,11 @@ td video {
 }
 
 .altitude-scale-limit-max {
-    top: 0;
+    top: 25px;
 }
 
 .altitude-scale-limit-min {
-    bottom: 0;
+    bottom: 14px;
 }
 
 #route-altitude-slider {
@@ -1596,7 +1596,7 @@ td video {
 
 #route-altitude-slider .noUi-handle::after {
     position: absolute;
-    top: 6px;
+    top: 12px;
     right: -2px;
     display: block;
     width: 18px;
@@ -1609,8 +1609,8 @@ td video {
 }
 
 #route-altitude-slider .noUi-tooltip {
-    top: 50%;
-    right: 22px;
+    top: 12px;
+    right: 0px;
     bottom: auto;
     left: auto;
     padding: 3px 7px;
