@@ -27,7 +27,7 @@ var wms_layers = [];
                                 "VERSION": "1.0.0",
                             })),
                             title: 'Landeskarte Winter',
-                            opacity: 1.0,
+                            opacity: 0.8,
                             
                             
                           });
@@ -64,6 +64,8 @@ var lyr_Winterwanderwege_3 = new ol.layer.Vector({
     <img src="styles/legend/Winterwanderwege_3_0.png" /> Best-of<br />\
     <img src="styles/legend/Winterwanderwege_3_1.png" /> Basisnetz<br />' });
 
+lyr_Schneeschuhwanderwege_1.setZIndex(10);
+lyr_Winterwanderwege_3.setZIndex(10);
 lyr_LandeskarteWinter_0.setVisible(true);lyr_Schneeschuhwanderwege_1.setVisible(true);lyr_Winterwanderwege_3.setVisible(true);
 var layersList = [lyr_LandeskarteWinter_0,lyr_Schneeschuhwanderwege_1,lyr_Winterwanderwege_3];
 lyr_Schneeschuhwanderwege_1.set('fieldAliases', {'OBJECTID': 'OBJECTID', 'Abwicklung': 'Abwicklung', 'AOrt': 'Ausgangs Ort', 'AuspraegR': 'AuspraegR', 'BeschreibR': 'Von - Bis', 'Change_Dt': 'Change_Dt', 'GueltigJ': 'GueltigJ', 'HoeheAbR': 'Abstieg', 'HoeheAufR': 'Aufstieg', 'HoeheMaxR': 'HoeheMaxR', 'HoeheMinR': 'HoeheMinR', 'KonditionR': 'Konditionelle Schwierigkeit', 'LaengeR': 'Distanz [m]', 'LVRoute_ID': 'LVRoute_ID', 'ReStR': 'ReStR', 'Richtung': 'Signalisationsrichtung', 'Routenart': 'Routenart', 'TechnikR': 'TechnikR', 'NameR': 'Name', 'NrR_ID': 'RoutenID FA LV', 'Typ_TR': 'Typ_TR', 'ZeitStZiR': 'Zeit Start - Ziel [min]', 'ZeitZiStR': 'Zeit Ziel - Start [min]', 'ZOrt': 'Zielort', 'NichtPubFhg': 'NichtPubFhg', 'UnsEtpZiel': 'UnsEtpZiel', 'NrR': 'Routennummer', 'LvArt': 'LvArt', 'Traeger': 'Trägerschaft', 'TraegerBem': 'TraegerBem', 'IsCHM': 'IsCHM', 'SHAPE_Length': 'SHAPE_Length', });
