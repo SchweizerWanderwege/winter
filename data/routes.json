@@ -99,17 +99,6 @@
     "is_chm": 0
   },
   {
-    "id": "76278",
-    "name": "169897-Unter Trübsee",
-    "typ": "Winterwanderwege",
-    "distanz_km": 5345.08,
-    "dauer": 123,
-    "aufstieg_m": 344,
-    "abstieg_m": 93,
-    "schwierigkeit": "mittel",
-    "is_chm": 0
-  },
-  {
     "id": "76289",
     "name": "169897-Unter Trübsee",
     "typ": "Schneeschuhrouten",
@@ -117,6 +106,17 @@
     "dauer": 121,
     "aufstieg_m": 283,
     "abstieg_m": 32,
+    "schwierigkeit": "mittel",
+    "is_chm": 0
+  },
+  {
+    "id": "76278",
+    "name": "169897-Unter Trübsee",
+    "typ": "Winterwanderwege",
+    "distanz_km": 5345.08,
+    "dauer": 123,
+    "aufstieg_m": 344,
+    "abstieg_m": 93,
     "schwierigkeit": "mittel",
     "is_chm": 0
   },
@@ -143,17 +143,6 @@
     "is_chm": 0
   },
   {
-    "id": "76287",
-    "name": "169919-178503",
-    "typ": "Winterwanderwege",
-    "distanz_km": 2929.8,
-    "dauer": 59,
-    "aufstieg_m": 73,
-    "abstieg_m": 143,
-    "schwierigkeit": "leicht",
-    "is_chm": 0
-  },
-  {
     "id": "76288",
     "name": "169919-178503",
     "typ": "Winterwanderwege",
@@ -161,6 +150,17 @@
     "dauer": 67,
     "aufstieg_m": 85,
     "abstieg_m": 155,
+    "schwierigkeit": "leicht",
+    "is_chm": 0
+  },
+  {
+    "id": "76287",
+    "name": "169919-178503",
+    "typ": "Winterwanderwege",
+    "distanz_km": 2929.8,
+    "dauer": 59,
+    "aufstieg_m": 73,
+    "abstieg_m": 143,
     "schwierigkeit": "leicht",
     "is_chm": 0
   },
@@ -331,7 +331,7 @@
   },
   {
     "id": "75395",
-    "name": "Aeschiried trail",
+    "name": "Aeschiried Trail",
     "typ": "Schneeschuhrouten",
     "distanz_km": 2096.21,
     "dauer": 56,
@@ -546,6 +546,17 @@
     "dauer": 110,
     "aufstieg_m": 208,
     "abstieg_m": 208,
+    "schwierigkeit": "mittel",
+    "is_chm": 0
+  },
+  {
+    "id": "78950",
+    "name": "Alpweg Trail",
+    "typ": "Schneeschuhrouten",
+    "distanz_km": 2552.68,
+    "dauer": 98,
+    "aufstieg_m": 272,
+    "abstieg_m": 112,
     "schwierigkeit": "mittel",
     "is_chm": 0
   },
@@ -803,6 +814,17 @@
     "is_chm": 0
   },
   {
+    "id": "78951",
+    "name": "Aspen Trail",
+    "typ": "Schneeschuhrouten",
+    "distanz_km": 1342.99,
+    "dauer": 37,
+    "aufstieg_m": 0,
+    "abstieg_m": 219,
+    "schwierigkeit": "mittel",
+    "is_chm": 0
+  },
+  {
     "id": "74829",
     "name": "Au village itinéraire 1",
     "typ": "Winterwanderwege",
@@ -960,8 +982,8 @@
     "id": "78453",
     "name": "Beleuchteter Winterwanderweg auf dem Jaunpass",
     "typ": "Winterwanderwege",
-    "distanz_km": 2419.37,
-    "dauer": 48,
+    "distanz_km": 2421.32,
+    "dauer": 49,
     "aufstieg_m": 71,
     "abstieg_m": 71,
     "schwierigkeit": "leicht",
@@ -1573,17 +1595,6 @@
     "is_chm": 0
   },
   {
-    "id": "76723",
-    "name": "Champfèr-Champfèr",
-    "typ": "Winterwanderwege",
-    "distanz_km": 3619.21,
-    "dauer": 72,
-    "aufstieg_m": 104,
-    "abstieg_m": 104,
-    "schwierigkeit": "leicht",
-    "is_chm": 0
-  },
-  {
     "id": "76720",
     "name": "Champfèr-Champfèr",
     "typ": "Winterwanderwege",
@@ -1592,6 +1603,17 @@
     "aufstieg_m": 212,
     "abstieg_m": 212,
     "schwierigkeit": "mittel",
+    "is_chm": 0
+  },
+  {
+    "id": "76723",
+    "name": "Champfèr-Champfèr",
+    "typ": "Winterwanderwege",
+    "distanz_km": 3619.21,
+    "dauer": 72,
+    "aufstieg_m": 104,
+    "abstieg_m": 104,
+    "schwierigkeit": "leicht",
     "is_chm": 0
   },
   {
@@ -2005,10 +2027,10 @@
     "id": "78591",
     "name": "Chemin Evolène - Les Haudères",
     "typ": "Winterwanderwege",
-    "distanz_km": 8366.97,
-    "dauer": 170,
-    "aufstieg_m": 261,
-    "abstieg_m": 261,
+    "distanz_km": 8514.37,
+    "dauer": 173,
+    "aufstieg_m": 266,
+    "abstieg_m": 266,
     "schwierigkeit": "mittel",
     "is_chm": 1
   },
@@ -2695,17 +2717,6 @@
     "is_chm": 1
   },
   {
-    "id": "69012",
-    "name": "Dünzenegg Trail",
-    "typ": "Schneeschuhrouten",
-    "distanz_km": 8430.08,
-    "dauer": 234,
-    "aufstieg_m": 443,
-    "abstieg_m": 443,
-    "schwierigkeit": "schwer",
-    "is_chm": 1
-  },
-  {
     "id": "75638",
     "name": "Dünzenegg Trail",
     "typ": "Schneeschuhrouten",
@@ -2715,6 +2726,17 @@
     "abstieg_m": 443,
     "schwierigkeit": "schwer",
     "is_chm": 0
+  },
+  {
+    "id": "69012",
+    "name": "Dünzenegg Trail",
+    "typ": "Schneeschuhrouten",
+    "distanz_km": 8430.08,
+    "dauer": 234,
+    "aufstieg_m": 443,
+    "abstieg_m": 443,
+    "schwierigkeit": "schwer",
+    "is_chm": 1
   },
   {
     "id": "69137",
@@ -2929,10 +2951,10 @@
     "id": "78923",
     "name": "Evolène-Les Haudères",
     "typ": "Winterwanderwege",
-    "distanz_km": 3890.83,
-    "dauer": 77,
-    "aufstieg_m": 89,
-    "abstieg_m": 143,
+    "distanz_km": 4038.24,
+    "dauer": 80,
+    "aufstieg_m": 95,
+    "abstieg_m": 148,
     "schwierigkeit": "leicht",
     "is_chm": 0
   },
@@ -3243,6 +3265,28 @@
     "abstieg_m": 183,
     "schwierigkeit": "leicht",
     "is_chm": 1
+  },
+  {
+    "id": "78929",
+    "name": "Früebüel",
+    "typ": "Winterwanderwege",
+    "distanz_km": 1649.01,
+    "dauer": 31,
+    "aufstieg_m": 40,
+    "abstieg_m": 40,
+    "schwierigkeit": "leicht",
+    "is_chm": 0
+  },
+  {
+    "id": "78925",
+    "name": "Früebüel - Räbrüti",
+    "typ": "Winterwanderwege",
+    "distanz_km": 9526.79,
+    "dauer": 182,
+    "aufstieg_m": 246,
+    "abstieg_m": 246,
+    "schwierigkeit": "mittel",
+    "is_chm": 0
   },
   {
     "id": "76779",
@@ -3567,10 +3611,21 @@
     "id": "77327",
     "name": "Gratalp Trail",
     "typ": "Schneeschuhrouten",
-    "distanz_km": 2011.5,
-    "dauer": 96,
+    "distanz_km": 2011.8,
+    "dauer": 95,
     "aufstieg_m": 371,
     "abstieg_m": 4,
+    "schwierigkeit": "mittel",
+    "is_chm": 0
+  },
+  {
+    "id": "78938",
+    "name": "Griesalp Trail",
+    "typ": "Schneeschuhrouten",
+    "distanz_km": 4370.19,
+    "dauer": 118,
+    "aufstieg_m": 212,
+    "abstieg_m": 212,
     "schwierigkeit": "mittel",
     "is_chm": 0
   },
@@ -4059,6 +4114,17 @@
     "is_chm": 1
   },
   {
+    "id": "78924",
+    "name": "Hintergeissboden",
+    "typ": "Winterwanderwege",
+    "distanz_km": 6281.82,
+    "dauer": 122,
+    "aufstieg_m": 161,
+    "abstieg_m": 161,
+    "schwierigkeit": "mittel",
+    "is_chm": 0
+  },
+  {
     "id": "69140",
     "name": "Hochalp Trail",
     "typ": "Schneeschuhrouten",
@@ -4403,7 +4469,7 @@
     "id": "69313",
     "name": "Jaunpass-Bäderegg-Weg",
     "typ": "Winterwanderwege",
-    "distanz_km": 5813.36,
+    "distanz_km": 5813.38,
     "dauer": 113,
     "aufstieg_m": 171,
     "abstieg_m": 171,
@@ -4664,17 +4730,6 @@
     "is_chm": 0
   },
   {
-    "id": "76861",
-    "name": "La Resgia-S-chanf",
-    "typ": "Winterwanderwege",
-    "distanz_km": 4403.79,
-    "dauer": 82,
-    "aufstieg_m": 69,
-    "abstieg_m": 95,
-    "schwierigkeit": "leicht",
-    "is_chm": 0
-  },
-  {
     "id": "76769",
     "name": "La Resgia-S-chanf",
     "typ": "Winterwanderwege",
@@ -4682,6 +4737,17 @@
     "dauer": 70,
     "aufstieg_m": 100,
     "abstieg_m": 126,
+    "schwierigkeit": "leicht",
+    "is_chm": 0
+  },
+  {
+    "id": "76861",
+    "name": "La Resgia-S-chanf",
+    "typ": "Winterwanderwege",
+    "distanz_km": 4403.79,
+    "dauer": 82,
+    "aufstieg_m": 69,
+    "abstieg_m": 95,
     "schwierigkeit": "leicht",
     "is_chm": 0
   },
@@ -5008,10 +5074,10 @@
     "id": "78177",
     "name": "Leiterli - Haslerbar",
     "typ": "Winterwanderwege",
-    "distanz_km": 3754.06,
-    "dauer": 86,
-    "aufstieg_m": 195,
-    "abstieg_m": 195,
+    "distanz_km": 1877.03,
+    "dauer": 36,
+    "aufstieg_m": 11,
+    "abstieg_m": 185,
     "schwierigkeit": "leicht",
     "is_chm": 0
   },
@@ -5357,17 +5423,6 @@
     "is_chm": 0
   },
   {
-    "id": "76851",
-    "name": "Madulain - Zuoz",
-    "typ": "Winterwanderwege",
-    "distanz_km": 1721.75,
-    "dauer": 33,
-    "aufstieg_m": 40,
-    "abstieg_m": 33,
-    "schwierigkeit": "leicht",
-    "is_chm": 0
-  },
-  {
     "id": "76852",
     "name": "Madulain - Zuoz",
     "typ": "Winterwanderwege",
@@ -5379,13 +5434,13 @@
     "is_chm": 0
   },
   {
-    "id": "76856",
+    "id": "76851",
     "name": "Madulain - Zuoz",
     "typ": "Winterwanderwege",
-    "distanz_km": 3003.65,
-    "dauer": 54,
-    "aufstieg_m": 12,
-    "abstieg_m": 23,
+    "distanz_km": 1721.75,
+    "dauer": 33,
+    "aufstieg_m": 40,
+    "abstieg_m": 33,
     "schwierigkeit": "leicht",
     "is_chm": 0
   },
@@ -5397,6 +5452,17 @@
     "dauer": 36,
     "aufstieg_m": 51,
     "abstieg_m": 28,
+    "schwierigkeit": "leicht",
+    "is_chm": 0
+  },
+  {
+    "id": "76856",
+    "name": "Madulain - Zuoz",
+    "typ": "Winterwanderwege",
+    "distanz_km": 3003.65,
+    "dauer": 54,
+    "aufstieg_m": 12,
+    "abstieg_m": 23,
     "schwierigkeit": "leicht",
     "is_chm": 0
   },
@@ -5742,17 +5808,6 @@
     "is_chm": 0
   },
   {
-    "id": "76843",
-    "name": "Muottas Muragl - Muottas Muragl",
-    "typ": "Winterwanderwege",
-    "distanz_km": 4705.9,
-    "dauer": 107,
-    "aufstieg_m": 227,
-    "abstieg_m": 227,
-    "schwierigkeit": "mittel",
-    "is_chm": 0
-  },
-  {
     "id": "76842",
     "name": "Muottas Muragl - Muottas Muragl",
     "typ": "Winterwanderwege",
@@ -5761,6 +5816,17 @@
     "aufstieg_m": 129,
     "abstieg_m": 129,
     "schwierigkeit": "leicht",
+    "is_chm": 0
+  },
+  {
+    "id": "76843",
+    "name": "Muottas Muragl - Muottas Muragl",
+    "typ": "Winterwanderwege",
+    "distanz_km": 4705.9,
+    "dauer": 107,
+    "aufstieg_m": 227,
+    "abstieg_m": 227,
+    "schwierigkeit": "mittel",
     "is_chm": 0
   },
   {
@@ -5838,6 +5904,17 @@
     "aufstieg_m": 164,
     "abstieg_m": 164,
     "schwierigkeit": "leicht",
+    "is_chm": 0
+  },
+  {
+    "id": "78949",
+    "name": "Mühlebach Trail",
+    "typ": "Schneeschuhrouten",
+    "distanz_km": 2852.23,
+    "dauer": 85,
+    "aufstieg_m": 216,
+    "abstieg_m": 44,
+    "schwierigkeit": "mittel",
     "is_chm": 0
   },
   {
@@ -6138,6 +6215,17 @@
     "is_chm": 1
   },
   {
+    "id": "78937",
+    "name": "Panorama Trail",
+    "typ": "Schneeschuhrouten",
+    "distanz_km": 7102.12,
+    "dauer": 194,
+    "aufstieg_m": 279,
+    "abstieg_m": 514,
+    "schwierigkeit": "schwer",
+    "is_chm": 0
+  },
+  {
     "id": "76805",
     "name": "Panorama-Rundweg in Sörenberg",
     "typ": "Winterwanderwege",
@@ -6299,7 +6387,7 @@
     "dauer": 179,
     "aufstieg_m": 337,
     "abstieg_m": 337,
-    "schwierigkeit": "mittel",
+    "schwierigkeit": "leicht",
     "is_chm": 1
   },
   {
@@ -6849,7 +6937,7 @@
     "dauer": 115,
     "aufstieg_m": 281,
     "abstieg_m": 281,
-    "schwierigkeit": "mittel",
+    "schwierigkeit": "leicht",
     "is_chm": 1
   },
   {
@@ -7238,12 +7326,23 @@
     "is_chm": 0
   },
   {
+    "id": "78928",
+    "name": "Pfaffenboden",
+    "typ": "Winterwanderwege",
+    "distanz_km": 4080.47,
+    "dauer": 79,
+    "aufstieg_m": 98,
+    "abstieg_m": 98,
+    "schwierigkeit": "leicht",
+    "is_chm": 0
+  },
+  {
     "id": "78919",
     "name": "Pian Nara - Cancorì",
     "typ": "Winterwanderwege",
-    "distanz_km": 9387.4,
-    "dauer": 193,
-    "aufstieg_m": 212,
+    "distanz_km": 9444.84,
+    "dauer": 194,
+    "aufstieg_m": 211,
     "abstieg_m": 694,
     "schwierigkeit": "schwer",
     "is_chm": 0
@@ -7722,6 +7821,17 @@
     "is_chm": 0
   },
   {
+    "id": "78940",
+    "name": "Ramslauenen Trail",
+    "typ": "Schneeschuhrouten",
+    "distanz_km": 4207.59,
+    "dauer": 108,
+    "aufstieg_m": 31,
+    "abstieg_m": 495,
+    "schwierigkeit": "schwer",
+    "is_chm": 0
+  },
+  {
     "id": "75264",
     "name": "Raten Trail",
     "typ": "Schneeschuhrouten",
@@ -7891,9 +8001,9 @@
     "name": "Rigi-Panoramaweg",
     "typ": "Winterwanderwege",
     "distanz_km": 7073.08,
-    "dauer": 122,
-    "aufstieg_m": 24,
-    "abstieg_m": 228,
+    "dauer": 139,
+    "aufstieg_m": 228,
+    "abstieg_m": 24,
     "schwierigkeit": "mittel",
     "is_chm": 1
   },
@@ -8022,11 +8132,11 @@
     "id": "69006",
     "name": "Rossberg-Schneeschuhtrail",
     "typ": "Schneeschuhrouten",
-    "distanz_km": 4708.3,
+    "distanz_km": 4708.32,
     "dauer": 143,
     "aufstieg_m": 297,
     "abstieg_m": 297,
-    "schwierigkeit": "mittel",
+    "schwierigkeit": "leicht",
     "is_chm": 1
   },
   {
@@ -8107,17 +8217,6 @@
     "is_chm": 1
   },
   {
-    "id": "74998",
-    "name": "Rotmoos Trail",
-    "typ": "Schneeschuhrouten",
-    "distanz_km": 6846.15,
-    "dauer": 197,
-    "aufstieg_m": 376,
-    "abstieg_m": 376,
-    "schwierigkeit": "leicht",
-    "is_chm": 1
-  },
-  {
     "id": "78755",
     "name": "Rotmoos Trail",
     "typ": "Schneeschuhrouten",
@@ -8127,6 +8226,17 @@
     "abstieg_m": 376,
     "schwierigkeit": "mittel",
     "is_chm": 0
+  },
+  {
+    "id": "74998",
+    "name": "Rotmoos Trail",
+    "typ": "Schneeschuhrouten",
+    "distanz_km": 6846.15,
+    "dauer": 197,
+    "aufstieg_m": 376,
+    "abstieg_m": 376,
+    "schwierigkeit": "leicht",
+    "is_chm": 1
   },
   {
     "id": "77326",
@@ -8613,17 +8723,6 @@
     "is_chm": 0
   },
   {
-    "id": "76845",
-    "name": "Samedan - Bever",
-    "typ": "Winterwanderwege",
-    "distanz_km": 3504.12,
-    "dauer": 68,
-    "aufstieg_m": 110,
-    "abstieg_m": 106,
-    "schwierigkeit": "leicht",
-    "is_chm": 0
-  },
-  {
     "id": "76761",
     "name": "Samedan - Bever",
     "typ": "Winterwanderwege",
@@ -8635,17 +8734,6 @@
     "is_chm": 0
   },
   {
-    "id": "76758",
-    "name": "Samedan - Bever",
-    "typ": "Winterwanderwege",
-    "distanz_km": 3154.74,
-    "dauer": 70,
-    "aufstieg_m": 149,
-    "abstieg_m": 144,
-    "schwierigkeit": "leicht",
-    "is_chm": 0
-  },
-  {
     "id": "76760",
     "name": "Samedan - Bever",
     "typ": "Winterwanderwege",
@@ -8653,6 +8741,28 @@
     "dauer": 78,
     "aufstieg_m": 34,
     "abstieg_m": 34,
+    "schwierigkeit": "leicht",
+    "is_chm": 0
+  },
+  {
+    "id": "76845",
+    "name": "Samedan - Bever",
+    "typ": "Winterwanderwege",
+    "distanz_km": 3504.12,
+    "dauer": 68,
+    "aufstieg_m": 110,
+    "abstieg_m": 106,
+    "schwierigkeit": "leicht",
+    "is_chm": 0
+  },
+  {
+    "id": "76758",
+    "name": "Samedan - Bever",
+    "typ": "Winterwanderwege",
+    "distanz_km": 3154.74,
+    "dauer": 70,
+    "aufstieg_m": 149,
+    "abstieg_m": 144,
     "schwierigkeit": "leicht",
     "is_chm": 0
   },
@@ -9240,6 +9350,17 @@
     "is_chm": 0
   },
   {
+    "id": "78827",
+    "name": "Schneeschuhtrail Tenner Alp",
+    "typ": "Schneeschuhrouten",
+    "distanz_km": 3128.35,
+    "dauer": 122,
+    "aufstieg_m": 295,
+    "abstieg_m": 270,
+    "schwierigkeit": "mittel",
+    "is_chm": 1
+  },
+  {
     "id": "69106",
     "name": "Schneeschuhtrail Tscheurig",
     "typ": "Schneeschuhrouten",
@@ -9315,17 +9436,6 @@
     "abstieg_m": 153,
     "schwierigkeit": "leicht",
     "is_chm": 0
-  },
-  {
-    "id": "78827",
-    "name": "Schneeschutrail Tenner Alp",
-    "typ": "Schneeschuhrouten",
-    "distanz_km": 3128.35,
-    "dauer": 122,
-    "aufstieg_m": 295,
-    "abstieg_m": 270,
-    "schwierigkeit": "mittel",
-    "is_chm": 1
   },
   {
     "id": "75066",
@@ -10134,9 +10244,9 @@
     "id": "69323",
     "name": "Sparenmoos-Winterwanderweg",
     "typ": "Winterwanderwege",
-    "distanz_km": 7165.15,
+    "distanz_km": 7165.68,
     "dauer": 158,
-    "aufstieg_m": 310,
+    "aufstieg_m": 311,
     "abstieg_m": 308,
     "schwierigkeit": "mittel",
     "is_chm": 1
@@ -10828,7 +10938,7 @@
     "name": "Teiffental Trail",
     "typ": "Schneeschuhrouten",
     "distanz_km": 6024.27,
-    "dauer": 151,
+    "dauer": 152,
     "aufstieg_m": 153,
     "abstieg_m": 499,
     "schwierigkeit": "schwer",
@@ -10937,10 +11047,10 @@
     "id": "78593",
     "name": "Tour de la Borgne",
     "typ": "Winterwanderwege",
-    "distanz_km": 3977.13,
+    "distanz_km": 3966.24,
     "dauer": 79,
-    "aufstieg_m": 118,
-    "abstieg_m": 116,
+    "aufstieg_m": 117,
+    "abstieg_m": 115,
     "schwierigkeit": "leicht",
     "is_chm": 0
   },
@@ -11352,39 +11462,6 @@
     "is_chm": 0
   },
   {
-    "id": "77391",
-    "name": "Verbindungsweg",
-    "typ": "Winterwanderwege",
-    "distanz_km": 192.92,
-    "dauer": 3,
-    "aufstieg_m": 0,
-    "abstieg_m": 20,
-    "schwierigkeit": "leicht",
-    "is_chm": 0
-  },
-  {
-    "id": "77701",
-    "name": "Verbindungsweg",
-    "typ": "Winterwanderwege",
-    "distanz_km": 577.63,
-    "dauer": 13,
-    "aufstieg_m": 34,
-    "abstieg_m": 2,
-    "schwierigkeit": "leicht",
-    "is_chm": 0
-  },
-  {
-    "id": "77433",
-    "name": "Verbindungsweg",
-    "typ": "Winterwanderwege",
-    "distanz_km": 283.33,
-    "dauer": 5,
-    "aufstieg_m": 4,
-    "abstieg_m": 10,
-    "schwierigkeit": "leicht",
-    "is_chm": 0
-  },
-  {
     "id": "77435",
     "name": "Verbindungsweg",
     "typ": "Winterwanderwege",
@@ -11392,50 +11469,6 @@
     "dauer": 7,
     "aufstieg_m": 6,
     "abstieg_m": 10,
-    "schwierigkeit": "leicht",
-    "is_chm": 0
-  },
-  {
-    "id": "77440",
-    "name": "Verbindungsweg",
-    "typ": "Winterwanderwege",
-    "distanz_km": 330.49,
-    "dauer": 6,
-    "aufstieg_m": 9,
-    "abstieg_m": 2,
-    "schwierigkeit": "leicht",
-    "is_chm": 0
-  },
-  {
-    "id": "77702",
-    "name": "Verbindungsweg",
-    "typ": "Winterwanderwege",
-    "distanz_km": 661.6,
-    "dauer": 17,
-    "aufstieg_m": 62,
-    "abstieg_m": 1,
-    "schwierigkeit": "leicht",
-    "is_chm": 0
-  },
-  {
-    "id": "74901",
-    "name": "Verbindungsweg",
-    "typ": "Winterwanderwege",
-    "distanz_km": 182.38,
-    "dauer": 3,
-    "aufstieg_m": 0,
-    "abstieg_m": 1,
-    "schwierigkeit": "leicht",
-    "is_chm": 0
-  },
-  {
-    "id": "77700",
-    "name": "Verbindungsweg",
-    "typ": "Winterwanderwege",
-    "distanz_km": 278.24,
-    "dauer": 5,
-    "aufstieg_m": 1,
-    "abstieg_m": 2,
     "schwierigkeit": "leicht",
     "is_chm": 0
   },
@@ -11462,6 +11495,83 @@
     "is_chm": 0
   },
   {
+    "id": "77700",
+    "name": "Verbindungsweg",
+    "typ": "Winterwanderwege",
+    "distanz_km": 278.24,
+    "dauer": 5,
+    "aufstieg_m": 1,
+    "abstieg_m": 2,
+    "schwierigkeit": "leicht",
+    "is_chm": 0
+  },
+  {
+    "id": "77433",
+    "name": "Verbindungsweg",
+    "typ": "Winterwanderwege",
+    "distanz_km": 283.33,
+    "dauer": 5,
+    "aufstieg_m": 4,
+    "abstieg_m": 10,
+    "schwierigkeit": "leicht",
+    "is_chm": 0
+  },
+  {
+    "id": "74901",
+    "name": "Verbindungsweg",
+    "typ": "Winterwanderwege",
+    "distanz_km": 182.38,
+    "dauer": 3,
+    "aufstieg_m": 0,
+    "abstieg_m": 1,
+    "schwierigkeit": "leicht",
+    "is_chm": 0
+  },
+  {
+    "id": "77440",
+    "name": "Verbindungsweg",
+    "typ": "Winterwanderwege",
+    "distanz_km": 330.49,
+    "dauer": 6,
+    "aufstieg_m": 9,
+    "abstieg_m": 2,
+    "schwierigkeit": "leicht",
+    "is_chm": 0
+  },
+  {
+    "id": "77701",
+    "name": "Verbindungsweg",
+    "typ": "Winterwanderwege",
+    "distanz_km": 577.63,
+    "dauer": 13,
+    "aufstieg_m": 34,
+    "abstieg_m": 2,
+    "schwierigkeit": "leicht",
+    "is_chm": 0
+  },
+  {
+    "id": "77702",
+    "name": "Verbindungsweg",
+    "typ": "Winterwanderwege",
+    "distanz_km": 661.6,
+    "dauer": 17,
+    "aufstieg_m": 62,
+    "abstieg_m": 1,
+    "schwierigkeit": "leicht",
+    "is_chm": 0
+  },
+  {
+    "id": "77391",
+    "name": "Verbindungsweg",
+    "typ": "Winterwanderwege",
+    "distanz_km": 192.92,
+    "dauer": 3,
+    "aufstieg_m": 0,
+    "abstieg_m": 20,
+    "schwierigkeit": "leicht",
+    "is_chm": 0
+  },
+  {
     "id": "76848",
     "name": "Verbindungsweg Bever",
     "typ": "Winterwanderwege",
@@ -11484,17 +11594,6 @@
     "is_chm": 0
   },
   {
-    "id": "76780",
-    "name": "Via Engiadina (Etappe)",
-    "typ": "Winterwanderwege",
-    "distanz_km": 5511.3,
-    "dauer": 107,
-    "aufstieg_m": 60,
-    "abstieg_m": 421,
-    "schwierigkeit": "mittel",
-    "is_chm": 0
-  },
-  {
     "id": "76777",
     "name": "Via Engiadina (Etappe)",
     "typ": "Winterwanderwege",
@@ -11502,6 +11601,17 @@
     "dauer": 140,
     "aufstieg_m": 314,
     "abstieg_m": 110,
+    "schwierigkeit": "mittel",
+    "is_chm": 0
+  },
+  {
+    "id": "76780",
+    "name": "Via Engiadina (Etappe)",
+    "typ": "Winterwanderwege",
+    "distanz_km": 5511.3,
+    "dauer": 107,
+    "aufstieg_m": 60,
+    "abstieg_m": 421,
     "schwierigkeit": "mittel",
     "is_chm": 0
   },
@@ -11755,7 +11865,7 @@
     "dauer": 203,
     "aufstieg_m": 362,
     "abstieg_m": 362,
-    "schwierigkeit": "mittel",
+    "schwierigkeit": "leicht",
     "is_chm": 1
   },
   {
@@ -12001,6 +12111,17 @@
     "is_chm": 0
   },
   {
+    "id": "78926",
+    "name": "Winter-Zubringer Parkplatz Hochwacht",
+    "typ": "Winterwanderwege",
+    "distanz_km": 981.15,
+    "dauer": 0,
+    "aufstieg_m": 11,
+    "abstieg_m": 1,
+    "schwierigkeit": "leicht",
+    "is_chm": 0
+  },
+  {
     "id": "76007",
     "name": "Winterromantik",
     "typ": "Schneeschuhrouten",
@@ -12009,6 +12130,17 @@
     "aufstieg_m": 255,
     "abstieg_m": 255,
     "schwierigkeit": "mittel",
+    "is_chm": 0
+  },
+  {
+    "id": "78930",
+    "name": "Winterrundwanderweg Eggli",
+    "typ": "Winterwanderwege",
+    "distanz_km": 3111.83,
+    "dauer": 76,
+    "aufstieg_m": 170,
+    "abstieg_m": 170,
+    "schwierigkeit": "leicht",
     "is_chm": 0
   },
   {
@@ -12357,7 +12489,7 @@
     "name": "Winterwanderweg Leiterli - Stoss",
     "typ": "Winterwanderwege",
     "distanz_km": 2662.32,
-    "dauer": 55,
+    "dauer": 56,
     "aufstieg_m": 13,
     "abstieg_m": 322,
     "schwierigkeit": "mittel",
@@ -12741,10 +12873,10 @@
     "id": "69271",
     "name": "Zugerberg-Weg",
     "typ": "Winterwanderwege",
-    "distanz_km": 9493.62,
-    "dauer": 182,
-    "aufstieg_m": 244,
-    "abstieg_m": 244,
+    "distanz_km": 9526.79,
+    "dauer": 183,
+    "aufstieg_m": 246,
+    "abstieg_m": 246,
     "schwierigkeit": "mittel",
     "is_chm": 1
   },
@@ -12760,17 +12892,6 @@
     "is_chm": 0
   },
   {
-    "id": "76860",
-    "name": "Zuoz - S-chanf",
-    "typ": "Winterwanderwege",
-    "distanz_km": 1747.51,
-    "dauer": 34,
-    "aufstieg_m": 42,
-    "abstieg_m": 79,
-    "schwierigkeit": "leicht",
-    "is_chm": 0
-  },
-  {
     "id": "76859",
     "name": "Zuoz - S-chanf",
     "typ": "Winterwanderwege",
@@ -12778,6 +12899,17 @@
     "dauer": 61,
     "aufstieg_m": 59,
     "abstieg_m": 65,
+    "schwierigkeit": "leicht",
+    "is_chm": 0
+  },
+  {
+    "id": "76860",
+    "name": "Zuoz - S-chanf",
+    "typ": "Winterwanderwege",
+    "distanz_km": 1747.51,
+    "dauer": 34,
+    "aufstieg_m": 42,
+    "abstieg_m": 79,
     "schwierigkeit": "leicht",
     "is_chm": 0
   },
