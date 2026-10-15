@@ -1,49 +1,5 @@
 [
   {
-    "id": "77760",
-    "name": "\tSchwarzenegg-Trail",
-    "typ": "Schneeschuhrouten",
-    "distanz_km": 7818.85,
-    "dauer": 233,
-    "aufstieg_m": 439,
-    "abstieg_m": 439,
-    "schwierigkeit": "schwer",
-    "is_chm": 0
-  },
-  {
-    "id": "77887",
-    "name": " Celerina/Schlarigna Bahnhof - Cristolais",
-    "typ": "Winterwanderwege",
-    "distanz_km": 1840.66,
-    "dauer": 45,
-    "aufstieg_m": 158,
-    "abstieg_m": 8,
-    "schwierigkeit": "leicht",
-    "is_chm": 0
-  },
-  {
-    "id": "76434",
-    "name": "156681-Zum See",
-    "typ": "Winterwanderwege",
-    "distanz_km": 1071.33,
-    "dauer": 35,
-    "aufstieg_m": 136,
-    "abstieg_m": 21,
-    "schwierigkeit": "leicht",
-    "is_chm": 0
-  },
-  {
-    "id": "76324",
-    "name": "170012-Ferden",
-    "typ": "Winterwanderwege",
-    "distanz_km": 3414.35,
-    "dauer": 91,
-    "aufstieg_m": 373,
-    "abstieg_m": 16,
-    "schwierigkeit": "mittel",
-    "is_chm": 0
-  },
-  {
     "id": "78869",
     "name": "179319-Hiver28",
     "typ": "Schneeschuhrouten",
@@ -51,17 +7,6 @@
     "dauer": 226,
     "aufstieg_m": 769,
     "abstieg_m": 10,
-    "schwierigkeit": "schwer",
-    "is_chm": 0
-  },
-  {
-    "id": "76321",
-    "name": "46372-Kippel",
-    "typ": "Winterwanderwege",
-    "distanz_km": 5447.45,
-    "dauer": 100,
-    "aufstieg_m": 0,
-    "abstieg_m": 590,
     "schwierigkeit": "schwer",
     "is_chm": 0
   },
@@ -968,17 +913,6 @@
     "is_chm": 0
   },
   {
-    "id": "78434",
-    "name": "Bisse du Milieu",
-    "typ": "Winterwanderwege",
-    "distanz_km": 2696.76,
-    "dauer": 54,
-    "aufstieg_m": 86,
-    "abstieg_m": 14,
-    "schwierigkeit": "leicht",
-    "is_chm": 0
-  },
-  {
     "id": "78541",
     "name": "Bisse du Milieu",
     "typ": "Schneeschuhrouten",
@@ -987,6 +921,17 @@
     "aufstieg_m": 452,
     "abstieg_m": 50,
     "schwierigkeit": "schwer",
+    "is_chm": 0
+  },
+  {
+    "id": "78434",
+    "name": "Bisse du Milieu",
+    "typ": "Winterwanderwege",
+    "distanz_km": 2696.76,
+    "dauer": 54,
+    "aufstieg_m": 86,
+    "abstieg_m": 14,
+    "schwierigkeit": "leicht",
     "is_chm": 0
   },
   {
@@ -1210,17 +1155,6 @@
     "is_chm": 0
   },
   {
-    "id": "69013",
-    "name": "Brunni Trail",
-    "typ": "Schneeschuhrouten",
-    "distanz_km": 12170.19,
-    "dauer": 396,
-    "aufstieg_m": 826,
-    "abstieg_m": 826,
-    "schwierigkeit": "schwer",
-    "is_chm": 1
-  },
-  {
     "id": "75394",
     "name": "Brunni Trail",
     "typ": "Schneeschuhrouten",
@@ -1230,6 +1164,17 @@
     "abstieg_m": 827,
     "schwierigkeit": "schwer",
     "is_chm": 0
+  },
+  {
+    "id": "69013",
+    "name": "Brunni Trail",
+    "typ": "Schneeschuhrouten",
+    "distanz_km": 12170.19,
+    "dauer": 396,
+    "aufstieg_m": 826,
+    "abstieg_m": 826,
+    "schwierigkeit": "schwer",
+    "is_chm": 1
   },
   {
     "id": "76290",
@@ -1419,6 +1364,17 @@
     "is_chm": 0
   },
   {
+    "id": "77887",
+    "name": "Celerina/Schlarigna Bahnhof - Cristolais",
+    "typ": "Winterwanderwege",
+    "distanz_km": 1840.66,
+    "dauer": 45,
+    "aufstieg_m": 158,
+    "abstieg_m": 8,
+    "schwierigkeit": "leicht",
+    "is_chm": 0
+  },
+  {
     "id": "76740",
     "name": "Celerina/Schlarigna Bahnhof-St. Moritz-Dorf",
     "typ": "Winterwanderwege",
@@ -1463,17 +1419,6 @@
     "is_chm": 0
   },
   {
-    "id": "76720",
-    "name": "Champfèr-Champfèr",
-    "typ": "Winterwanderwege",
-    "distanz_km": 6882.34,
-    "dauer": 138,
-    "aufstieg_m": 212,
-    "abstieg_m": 212,
-    "schwierigkeit": "mittel",
-    "is_chm": 0
-  },
-  {
     "id": "76723",
     "name": "Champfèr-Champfèr",
     "typ": "Winterwanderwege",
@@ -1482,6 +1427,17 @@
     "aufstieg_m": 104,
     "abstieg_m": 104,
     "schwierigkeit": "leicht",
+    "is_chm": 0
+  },
+  {
+    "id": "76720",
+    "name": "Champfèr-Champfèr",
+    "typ": "Winterwanderwege",
+    "distanz_km": 6882.34,
+    "dauer": 138,
+    "aufstieg_m": 212,
+    "abstieg_m": 212,
+    "schwierigkeit": "mittel",
     "is_chm": 0
   },
   {
@@ -1606,17 +1562,6 @@
     "is_chm": 0
   },
   {
-    "id": "76770",
-    "name": "Chapella - Cinuos-chel",
-    "typ": "Winterwanderwege",
-    "distanz_km": 1284.32,
-    "dauer": 24,
-    "aufstieg_m": 31,
-    "abstieg_m": 30,
-    "schwierigkeit": "leicht",
-    "is_chm": 0
-  },
-  {
     "id": "76771",
     "name": "Chapella - Cinuos-chel",
     "typ": "Winterwanderwege",
@@ -1624,6 +1569,17 @@
     "dauer": 34,
     "aufstieg_m": 72,
     "abstieg_m": 71,
+    "schwierigkeit": "leicht",
+    "is_chm": 0
+  },
+  {
+    "id": "76770",
+    "name": "Chapella - Cinuos-chel",
+    "typ": "Winterwanderwege",
+    "distanz_km": 1284.32,
+    "dauer": 24,
+    "aufstieg_m": 31,
+    "abstieg_m": 30,
     "schwierigkeit": "leicht",
     "is_chm": 0
   },
@@ -2956,6 +2912,17 @@
     "aufstieg_m": 392,
     "abstieg_m": 637,
     "schwierigkeit": "schwer",
+    "is_chm": 0
+  },
+  {
+    "id": "76324",
+    "name": "Ferden - Eistli",
+    "typ": "Winterwanderwege",
+    "distanz_km": 3414.35,
+    "dauer": 90,
+    "aufstieg_m": 373,
+    "abstieg_m": 16,
+    "schwierigkeit": "mittel",
     "is_chm": 0
   },
   {
@@ -4719,17 +4686,6 @@
     "is_chm": 0
   },
   {
-    "id": "76862",
-    "name": "La Resgia-Susauna",
-    "typ": "Winterwanderwege",
-    "distanz_km": 1657.8,
-    "dauer": 34,
-    "aufstieg_m": 57,
-    "abstieg_m": 11,
-    "schwierigkeit": "leicht",
-    "is_chm": 0
-  },
-  {
     "id": "76772",
     "name": "La Resgia-Susauna",
     "typ": "Winterwanderwege",
@@ -4737,6 +4693,17 @@
     "dauer": 32,
     "aufstieg_m": 48,
     "abstieg_m": 2,
+    "schwierigkeit": "leicht",
+    "is_chm": 0
+  },
+  {
+    "id": "76862",
+    "name": "La Resgia-Susauna",
+    "typ": "Winterwanderwege",
+    "distanz_km": 1657.8,
+    "dauer": 34,
+    "aufstieg_m": 57,
+    "abstieg_m": 11,
     "schwierigkeit": "leicht",
     "is_chm": 0
   },
@@ -4884,6 +4851,17 @@
     "is_chm": 1
   },
   {
+    "id": "76321",
+    "name": "Lauchernalp - Kippel",
+    "typ": "Winterwanderwege",
+    "distanz_km": 5447.45,
+    "dauer": 99,
+    "aufstieg_m": 0,
+    "abstieg_m": 590,
+    "schwierigkeit": "schwer",
+    "is_chm": 0
+  },
+  {
     "id": "76322",
     "name": "Lauchernalp - Wiler",
     "typ": "Winterwanderwege",
@@ -5027,17 +5005,6 @@
     "is_chm": 1
   },
   {
-    "id": "79048",
-    "name": "Leiterhorn Trail",
-    "typ": "Schneeschuhrouten",
-    "distanz_km": 5200.55,
-    "dauer": 148,
-    "aufstieg_m": 267,
-    "abstieg_m": 267,
-    "schwierigkeit": "mittel",
-    "is_chm": 0
-  },
-  {
     "id": "69001",
     "name": "Leiterhorn Trail",
     "typ": "Schneeschuhrouten",
@@ -5047,6 +5014,17 @@
     "abstieg_m": 267,
     "schwierigkeit": "mittel",
     "is_chm": 1
+  },
+  {
+    "id": "79048",
+    "name": "Leiterhorn Trail",
+    "typ": "Schneeschuhrouten",
+    "distanz_km": 5200.55,
+    "dauer": 148,
+    "aufstieg_m": 267,
+    "abstieg_m": 267,
+    "schwierigkeit": "mittel",
+    "is_chm": 0
   },
   {
     "id": "78177",
@@ -5423,17 +5401,6 @@
     "is_chm": 0
   },
   {
-    "id": "76856",
-    "name": "Madulain - Zuoz",
-    "typ": "Winterwanderwege",
-    "distanz_km": 3514.65,
-    "dauer": 62,
-    "aufstieg_m": 15,
-    "abstieg_m": 42,
-    "schwierigkeit": "leicht",
-    "is_chm": 0
-  },
-  {
     "id": "76855",
     "name": "Madulain - Zuoz",
     "typ": "Winterwanderwege",
@@ -5463,6 +5430,17 @@
     "dauer": 54,
     "aufstieg_m": 160,
     "abstieg_m": 54,
+    "schwierigkeit": "leicht",
+    "is_chm": 0
+  },
+  {
+    "id": "76856",
+    "name": "Madulain - Zuoz",
+    "typ": "Winterwanderwege",
+    "distanz_km": 3514.65,
+    "dauer": 62,
+    "aufstieg_m": 15,
+    "abstieg_m": 42,
     "schwierigkeit": "leicht",
     "is_chm": 0
   },
@@ -6714,7 +6692,7 @@
     "name": "Parcours de Tortin",
     "typ": "Schneeschuhrouten",
     "distanz_km": 7416.35,
-    "dauer": 196,
+    "dauer": 197,
     "aufstieg_m": 329,
     "abstieg_m": 329,
     "schwierigkeit": "mittel",
@@ -7634,17 +7612,6 @@
     "is_chm": 0
   },
   {
-    "id": "78433",
-    "name": "Pra da Dzeu",
-    "typ": "Schneeschuhrouten",
-    "distanz_km": 5770.98,
-    "dauer": 159,
-    "aufstieg_m": 242,
-    "abstieg_m": 242,
-    "schwierigkeit": "mittel",
-    "is_chm": 0
-  },
-  {
     "id": "78536",
     "name": "Pra da Dzeu",
     "typ": "Winterwanderwege",
@@ -7652,6 +7619,17 @@
     "dauer": 237,
     "aufstieg_m": 474,
     "abstieg_m": 474,
+    "schwierigkeit": "mittel",
+    "is_chm": 0
+  },
+  {
+    "id": "78433",
+    "name": "Pra da Dzeu",
+    "typ": "Schneeschuhrouten",
+    "distanz_km": 5770.98,
+    "dauer": 159,
+    "aufstieg_m": 242,
+    "abstieg_m": 242,
     "schwierigkeit": "mittel",
     "is_chm": 0
   },
@@ -9504,6 +9482,17 @@
     "is_chm": 1
   },
   {
+    "id": "77760",
+    "name": "Schwarzenegg-Trail",
+    "typ": "Schneeschuhrouten",
+    "distanz_km": 7818.85,
+    "dauer": 235,
+    "aufstieg_m": 439,
+    "abstieg_m": 439,
+    "schwierigkeit": "schwer",
+    "is_chm": 0
+  },
+  {
     "id": "78626",
     "name": "Schwarzsee - Stafel - Furi - Weg",
     "typ": "Winterwanderwege",
@@ -10791,17 +10780,6 @@
     "is_chm": 0
   },
   {
-    "id": "69000",
-    "name": "Sulwald Trail",
-    "typ": "Schneeschuhrouten",
-    "distanz_km": 2012.33,
-    "dauer": 74,
-    "aufstieg_m": 168,
-    "abstieg_m": 168,
-    "schwierigkeit": "leicht",
-    "is_chm": 1
-  },
-  {
     "id": "79047",
     "name": "Sulwald Trail",
     "typ": "Schneeschuhrouten",
@@ -10811,6 +10789,17 @@
     "abstieg_m": 168,
     "schwierigkeit": "leicht",
     "is_chm": 0
+  },
+  {
+    "id": "69000",
+    "name": "Sulwald Trail",
+    "typ": "Schneeschuhrouten",
+    "distanz_km": 2012.33,
+    "dauer": 74,
+    "aufstieg_m": 168,
+    "abstieg_m": 168,
+    "schwierigkeit": "leicht",
+    "is_chm": 1
   },
   {
     "id": "78561",
@@ -11605,17 +11594,6 @@
     "is_chm": 0
   },
   {
-    "id": "77700",
-    "name": "Verbindungsweg",
-    "typ": "Winterwanderwege",
-    "distanz_km": 278.24,
-    "dauer": 5,
-    "aufstieg_m": 1,
-    "abstieg_m": 2,
-    "schwierigkeit": "leicht",
-    "is_chm": 0
-  },
-  {
     "id": "74901",
     "name": "Verbindungsweg",
     "typ": "Winterwanderwege",
@@ -11623,17 +11601,6 @@
     "dauer": 3,
     "aufstieg_m": 0,
     "abstieg_m": 1,
-    "schwierigkeit": "leicht",
-    "is_chm": 0
-  },
-  {
-    "id": "77703",
-    "name": "Verbindungsweg",
-    "typ": "Winterwanderwege",
-    "distanz_km": 450.64,
-    "dauer": 9,
-    "aufstieg_m": 19,
-    "abstieg_m": 3,
     "schwierigkeit": "leicht",
     "is_chm": 0
   },
@@ -11649,13 +11616,35 @@
     "is_chm": 0
   },
   {
-    "id": "76780",
+    "id": "77703",
+    "name": "Verbindungsweg",
+    "typ": "Winterwanderwege",
+    "distanz_km": 450.64,
+    "dauer": 9,
+    "aufstieg_m": 19,
+    "abstieg_m": 3,
+    "schwierigkeit": "leicht",
+    "is_chm": 0
+  },
+  {
+    "id": "77700",
+    "name": "Verbindungsweg",
+    "typ": "Winterwanderwege",
+    "distanz_km": 278.24,
+    "dauer": 5,
+    "aufstieg_m": 1,
+    "abstieg_m": 2,
+    "schwierigkeit": "leicht",
+    "is_chm": 0
+  },
+  {
+    "id": "76792",
     "name": "Via Engiadina (Etappe)",
     "typ": "Winterwanderwege",
-    "distanz_km": 5511.3,
-    "dauer": 107,
-    "aufstieg_m": 60,
-    "abstieg_m": 421,
+    "distanz_km": 6353.85,
+    "dauer": 115,
+    "aufstieg_m": 52,
+    "abstieg_m": 140,
     "schwierigkeit": "mittel",
     "is_chm": 0
   },
@@ -11671,13 +11660,13 @@
     "is_chm": 0
   },
   {
-    "id": "76792",
+    "id": "76780",
     "name": "Via Engiadina (Etappe)",
     "typ": "Winterwanderwege",
-    "distanz_km": 6353.85,
-    "dauer": 115,
-    "aufstieg_m": 52,
-    "abstieg_m": 140,
+    "distanz_km": 5511.3,
+    "dauer": 107,
+    "aufstieg_m": 60,
+    "abstieg_m": 421,
     "schwierigkeit": "mittel",
     "is_chm": 0
   },
@@ -12877,6 +12866,17 @@
     "dauer": 36,
     "aufstieg_m": 145,
     "abstieg_m": 0,
+    "schwierigkeit": "leicht",
+    "is_chm": 0
+  },
+  {
+    "id": "76434",
+    "name": "Zermatt - Zum See",
+    "typ": "Winterwanderwege",
+    "distanz_km": 1071.33,
+    "dauer": 34,
+    "aufstieg_m": 136,
+    "abstieg_m": 21,
     "schwierigkeit": "leicht",
     "is_chm": 0
   },
