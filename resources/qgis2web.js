@@ -579,7 +579,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	lastWorkedOnDiv.style.borderRadius = '3px';
 	
 	// Set the content of the overlay
-	var lastWorkedOnDate = new Date('2026-09-14').toLocaleDateString(); // Replace with the actual date
+	var lastWorkedOnDate = new Date('2026-10-26').toLocaleDateString(); // Replace with the actual date
 	lastWorkedOnDiv.innerHTML = 'Datenstand: ' + lastWorkedOnDate;
 	
 	// Create a new control for the overlay
